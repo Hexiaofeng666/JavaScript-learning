@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 600px;
+            height: 600px;
+            /* background: yellow; */
+            margin: 50px auto;
+        }
+
+        #table-1 {
+            width: 500px;
+            line-height: 35px;
+
+        }
+
+        #lin {
+            margin: 20px 0;
+            height: 30px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="content">
+        <input type="text" id="lin" placeholder="请输入需要搜索的内容">
+
+        <table id="table-1" cellspacing='0' border="1" style="text-align: center;">
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>电话</th>
+                <th>地址</th>
+            </tr>
+
+            <tr>
+                <td>林兵</td>
+                <td>男</td>
+                <td>18</td>
+                <td>12345678941</td>
+                <td>富顺</td>
+            </tr>
+            <tr>
+                <td>赖玉英</td>
+                <td>女</td>
+                <td>18</td>
+                <td>12345678942</td>
+                <td>南充</td>
+            </tr>
+            <tr>
+                <td>潘旭</td>
+                <td>女</td>
+                <td>20</td>
+                <td>12345678912</td>
+                <td>富顺</td>
+            </tr>
+            <tr>
+                <td>王威平</td>
+                <td>男</td>
+                <td>20</td>
+                <td>97543152146</td>
+                <td>广元</td>
+            </tr>
+            <tr>
+                <td>李丹</td>
+                <td>女</td>
+                <td>30</td>
+                <td>14725836910</td>
+                <td>江安</td>
+            </tr>
+            <tr>
+                <td>陈志樑</td>
+                <td>男</td>
+                <td>20</td>
+                <td>31546287451</td>
+                <td>富顺</td>
+            </tr>
+            <tr>
+                <td>郭仕宏</td>
+                <td>男</td>
+                <td>20</td>
+                <td>51240316845</td>
+                <td>南充</td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+
+    <script>
+        var data = [{
+                name: '林兵',
+                sex: '男',
+                age: 18,
+                phone: '12345678941',
+                address: '富顺'
+            },
+            {
+                name: '赖玉英',
+                sex: '女',
+                age: 18,
+                phone: '12345678942',
+                address: '南充'
+            },
+            {
+                name: '潘旭',
+                sex: '女',
+                age: 20,
+                phone: '12345678912',
+                address: '富顺'
+            },
+            {
+                name: '王威平',
+                sex: '男',
+                age: 20,
+                phone: '97543152146',
+                address: '广元'
+            },
+            {
+                name: '李丹',
+                sex: '女',
+                age: 30,
+                phone: '14725836910',
+                address: '江安'
+            },
+            {
+                name: '陈志樑',
+                sex: '男',
+                age: 20,
+                phone: '31546287451',
+                address: '富顺'
+            },
+            {
+                name: '郭仕宏',
+                sex: '男',
+                age: 20,
+                phone: '51240316845',
+                address: '南充'
+            }
+
+
+        ]
+        var inp = document.querySelector('input')
+        // var obj = JSON.stringify(data)
+        var tab = document.querySelector('table')
+        inp.oninput = function () {
+            str = '<tr><th>姓名</th><th>性别</th><th>年龄</th><th>电话</th><th>地址</th></tr>'
+            for (let i = 0; i < data.length; i++) {
+                var obj = JSON.stringify(data[i])
+                var boy = []
+                if (obj.indexOf(inp.value) != -1) {
+                    if (inp.value != '') {
+                        // var boy = JSON.parse(obj.replace(inp.value, '<b>' + inp.value + '</b>'))
+                        // 利用json进行对象地址转换，转换为一个数据和原来对象一样的新对象（此时的存储地址就不是同一个）
+                        var objj = JSON.parse(JSON.stringify(data[i]))
+                        for (const key in objj) {
+                            // 将每个对象的每个属性类型转换一下
+                            objj[key] = String(objj[key]).replace(inp.value, `<span>${inp.value}</span>`)
+                            boy = objj
+                        }
+                    } else  boy = JSON.parse(obj)
+                    // console.log(boy);
+                    str += '<tr><th>' + boy.name + '</th><th>' + boy.sex + '</th><th>' + boy.age + '</th><th>' + boy
+                        .phone + '</th><th>' + boy.address + '</th></tr>'
+                }
+            }
+            tab.innerHTML = str
+        }
+    </script>
+</body>
+
+</html>

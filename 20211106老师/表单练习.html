@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body{
+      margin: 0;
+      height: 100%;
+    }
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+    }
+    div span{
+      display: inline-block;
+      /* width: 120px; */
+      /* text-align: right; */
+    }
+    i{font-style: normal;margin-left: 4px;}
+    input{
+      height: 25px;
+      margin-left: 10px;
+    }
+    div{
+      margin-bottom: 10px;
+      position: relative;
+    }
+    div:last-child{
+      text-align: center;
+     
+    }
+    button{
+       background-color: orange;
+      border: none;
+      color: white;
+    }
+    section{
+      position: absolute;
+      right: -105%;
+      width: 300px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgb(243, 251, 255);
+      font-size: 15px !important;
+      padding: 4px 8px;
+      box-sizing: border-box;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+    <form action="">
+        <div>
+          <span>用 <i>户</i>&nbsp; 名 : </span><input type="text">
+          <section>请输入6个字符的用户名，可由汉字数字字母下划线组成（空格自动忽略）。</section>
+        </div>
+        <div>
+          <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 码 : </span><input type="text">
+          <section>请输入6-18位密码，由数字字母下划线组成（不能出现空格）。</section>
+        </div>
+        <div>
+          <span>确认密码 :</span><input type="text">
+          <section>请再次输入密码。</section>
+        </div>
+        <div>
+          <span>QQ 邮箱 :</span><input type="text">
+          <section>请输入您的QQ邮箱。</section>
+        </div>
+        <div>
+           <button>注册</button>
+        </div>
+    </form>
+    <script>
+      var inputs = document.querySelectorAll('input')
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].onfocus=function(){
+          this.nextElementSibling.style.display='block'
+          this.nextElementSibling.innerText = this.nextElementSibling.dataset.info
+          this.nextElementSibling.style.backgroundColor = 'rgb(243, 251, 255)'
+        }
+        
+        inputs[i].index=i
+        // 事先将每个section的内容存放在section的一个自定义属性中
+        inputs[i].nextElementSibling.dataset.info= inputs[i].nextElementSibling.innerText
+        inputs[i].onblur=function(){
+          if(this.value.trim().length){
+            // 进行内容对比，查看是否符合要求
+              if (this.index == 0) {
+                // 第一个input框进行内容判断
+                 checked(0, this,'请输入正确的用户名')
+              }else if(this.index==1){
+                // 第二个input框
+                checked(1,this,'请输入正确的密码')
+              }
+          }else{
+             this.nextElementSibling.style.display = 'none'
+          }
+        }
+      }
+
+      function checked(num,el,errStr){
+        var val = el.value.replace(/ /g, '')
+        var caseTyp
+        if(num==0){
+          caseTyp= val.length>=6?true:false
+        }else if(num==1){
+          caseTyp =val.length>=6&& val.length<=18?true:false
+        }
+        if(caseTyp){
+          el.nextElementSibling.innerText = '正确'
+          el.nextElementSibling.style.backgroundColor = 'green'
+        }else{
+          el.nextElementSibling.innerText = errStr
+          el.nextElementSibling.style.backgroundColor = 'red'
+        }
+      }
+
+
+      // 邮箱的判断要求，主要判断内容中是否以@qq.com结尾
+    </script>
+</body>
+</html>

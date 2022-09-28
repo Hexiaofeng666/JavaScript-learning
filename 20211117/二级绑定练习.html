@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.css">
+    <!-- 引入js -->
+    <!-- 注意：由于bootstrap.js是基于jquery编写，所以要在引入的时候先引入jquery -->
+    <!-- <script src="./bootstrap-3.4.1-dist/js/jq-3.5.1.js"></script>
+    <script src="/bootstrap-3.4.1-dist/js/bootstrap.js"></script> -->
+    <script src="./二级绑定.js"></script>
+    <style>
+        main {
+            display: flex;
+        }
+
+        main>section {
+            display: inline-block;
+        }
+
+        button {
+            background-color: white;
+            width: 150px;
+            /* display: flex;
+            justify-content: space-between; */
+        }
+
+        ul {
+            display: none;
+            border: 1px solid grey;
+            /* background-color: rgb(241, 238, 238); */
+        }
+
+        li {
+            text-decoration: none;
+            list-style: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- <span>城市：</span> -->
+
+        <section>
+            <span>城市：</span>
+            <button>
+                <span class="myshow"></span>
+                <span class="caret"></span>
+            </button>
+            <ul class="province">
+                <li>北京市</li>
+                <li>上海市</li>
+                <li>北京市</li>
+                <li>上海市</li>
+            </ul>
+        </section>
+
+        <section>
+            <span>地区：</span>
+            <button>
+                <span class="myshow"> </span>
+                <span class="caret"></span>
+            </button>
+            <ul class="city">
+                <li>北京市</li>
+                <li>上海市</li>
+                <li>北京市</li>
+                <li>上海市</li>
+            </ul>
+        </section>
+    </main>
+    <script>
+        var main = document.querySelector('main')
+        var province = document.querySelector('.province')
+        var city = document.querySelector('.city')
+        var button = document.querySelectorAll('button')
+        var myshow = document.querySelectorAll('.myshow')
+        var ul = document.querySelectorAll('ul')
+        for (let i = 0; i < 2; i++) {
+            button[i].onclick = function () {
+                if (ul[i].style.display == 'block') {
+                    ul[i].style.display = 'none'
+                } else {
+                    ul[i].style.display = 'block'
+                }
+                // console.log(button[i].innerText);
+            }
+            myshow[0].innerText = arr_province[0]
+        }
+        // 省市渲染
+        var provincearr = ''
+        for (let i = 0; i < arr_province.length; i++) {
+            provincearr += '<li onclick="change(' + i + ')">' + arr_province[i] + '</li>'
+        }
+        province.innerHTML = provincearr
+        console.log(province);
+
+        // 地区渲染
+        var myprovince = 0
+        function showcity() {
+            var cityarr = ''
+            for (let i = 0; i < arr_city[myprovince].length; i++) {
+                cityarr += '<li onclick="citychange(' + i + ')">' + arr_city[myprovince][i] + '</li>'
+                // console.log(arr);
+
+            }
+            city.innerHTML = cityarr
+            myshow[1].innerText = arr_city[myprovince][0]
+        }
+        showcity()
+        // 改变省份时触发
+        function change(num){
+            console.log(num);
+            myshow[0].innerText = arr_province[num]
+            ul[0].style.display = 'none'
+            console.log(arr_city[num]);
+            myprovince = num
+            showcity()
+            
+        }
+        // 改变城市
+        function citychange(num){
+            myshow[1].innerText = arr_city[myprovince][num]
+            ul[1].style.display = 'none'
+        }
+    </script>
+</body>
+
+</html>

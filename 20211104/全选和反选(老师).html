@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      display: flex;
+      height: 100vh;
+      margin: 0;
+      justify-content: center;
+      align-items: center;
+    }
+    main{
+      display: inline-block;
+      border: 1px solid black;
+      padding: 5px;
+      border-radius: 10px;
+    }
+    ul{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    section{
+      border-bottom: 1px solid black;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+    section span:last-child{
+      margin-left: 10px;
+      margin-right: 40px;
+    }
+    li{
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+    <main>
+      <section><input type="checkbox" name="" id=""><span>全选</span><span>反选</span></section>
+      <ul>
+        <li><input type="checkbox" name="" id=""><span>选项1</span></li>
+        <li><input type="checkbox" name="" id=""><span>选项2</span></li>
+        <li><input type="checkbox" name="" id=""><span>选项3</span></li>
+        <li><input type="checkbox" name="" id=""><span>选项4</span></li>
+        <li><input type="checkbox" name="" id=""><span>选项5</span></li>
+        <li><input type="checkbox" name="" id=""><span>选项6</span></li>
+        <li><input type="checkbox" name="" id=""><span>选项7</span></li>
+        <li><input type="checkbox" name="" id=""><span>选项8</span></li>
+        <li><input type="checkbox" name="" id=""><span>选项9</span></li>
+        <li><input type="checkbox" name="" id=""><span>选项10</span></li>
+      </ul>
+    </main>
+    <script>
+      // 获取要操作的标签
+      var allchoose = document.querySelector('section input')
+      // 获取所有的选项
+      var chooses = document.querySelectorAll('li input')
+
+      // 记录你被勾选的个数
+      var count = 0
+      allchoose.onclick=function(){
+        var _this=this
+        chooses.forEach(function (item) {
+          item.checked = _this.checked
+        })
+        this.nextElementSibling.innerHTML=this.checked?'全不选':'全选'
+        count = this.checked?10:0
+      }
+      
+      // 对每个选项进行遍历事件绑定操作
+      chooses.forEach(function(item){
+        item.onclick=function(){
+          // if(this.checked){
+          //   // 勾选
+          //  count++
+          // }else{
+          //   count--
+          // }  
+           this.checked ? count++ : count--
+          // ount =c this.checked?count+1:count-1
+          allchoose.checked=count==10?true:false
+          allchoose.nextElementSibling.innerHTML=count==10?'全不选':'全选'
+        }
+      })
+
+      // 反选
+      var backchoose = document.querySelector('section span:last-child')
+      backchoose.onclick=function(){
+        chooses.forEach(function(item){
+          item.checked=!item.checked
+        })
+        // 计算出反选之后的个数
+        count = 10- count
+        allchoose.checked = count == 10 ? true : false
+        allchoose.nextElementSibling.innerHTML = count == 10 ? '全不选' : '全选'
+      }
+
+    </script>
+</body>
+</html>

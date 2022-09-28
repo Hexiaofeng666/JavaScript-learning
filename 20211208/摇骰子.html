@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    button{
+      border:none;
+      background-color: green;
+      cursor: pointer;
+      width: 100px;
+      line-height: 30px;
+      
+    }
+    img:first-child{
+      display: block;
+      margin: auto;
+    }
+    img{
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+    <p></p>
+    <main></main>
+    <button>摇一摇</button>
+    <script>
+      var main = document.querySelector('main')
+      var btn = document.querySelector('button')
+      var p = document.querySelector('p')
+
+      // 记录运动状态
+      var ischange=true
+      var time
+
+      // 初始渲染
+      for (var i = 0; i < 3; i++) {
+        main.innerHTML+='<img src="https://demo.lanrenzhijia.com/demo/112/11228/demo/img/6-point.png">'
+      }
+     
+      btn.onclick=function(){
+        p.innerHTML=''
+        if(ischange){
+         time=setInterval(function(){
+            for (var i = 0; i < main.children.length; i++) {
+              var r = Math.ceil(Math.random()*5)
+              main.children[i].src='https://demo.lanrenzhijia.com/demo/112/11228/demo/img/'+r+'-point.png'
+              main.children[i].dataset.num=r
+            }
+          }, 50);
+        }else{
+          clearInterval(time)
+          var sum =0
+          for (var i = 0; i < main.children.length; i++) {
+           sum += main.children[i].dataset.num*1
+           p.innerHTML='当前总点数为：'+sum
+          }
+        }
+        this.innerHTML=ischange?'停止':'摇一摇'
+        this.style.backgroundColor= ischange?'red':'green'
+        ischange=!ischange
+      }
+    </script>
+</body>
+</html>

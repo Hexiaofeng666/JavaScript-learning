@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    main{
+      display: flex;
+      justify-content: center;
+    }
+    ul{list-style: none;padding: 0;margin: 0;}
+    .right,.left{
+      border: 1px solid #ebeef5;
+      width: 250px;
+      border-radius: 5px;
+      min-height: 500px;
+      overflow: hidden;
+    }
+    div section{
+      background-color: #f5f7fa;
+      /* width: 105%; */
+      padding: 10px;
+    } 
+    ul{
+      padding: 7px 10px;
+    }
+    li{
+      line-height: 35px;
+    }
+    div:nth-child(2){
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 30px;
+    }
+    button{
+      border: none;
+      background: none;
+      border-radius: 50%;
+      padding: 10px 14px;
+      border: 1px solid #C0C4CC;
+    }
+    button:last-child{
+      margin-top: 20px;
+    }
+    .active{
+      background-color: #409eff;
+      color: white;
+    }
+    
+  </style>
+</head>
+<body>
+   <main>
+     <div class="left">
+       <section>
+         <input type="checkbox" name="" id="chooseAll_left">
+         <label for="chooseAll_left">列表一</label>
+       </section>
+       <ul>
+         <li><input type="checkbox" name="" id="choose1"><label for="choose1">备选项1</label></li>
+         <li><input type="checkbox" name="" id="choose2"><label for="choose2">备选项2</label></li>
+         <li><input type="checkbox" name="" id="choose3"><label for="choose3">备选项3</label></li>
+         <li><input type="checkbox" name="" id="choose4"><label for="choose4">备选项4</label></li>
+         <li><input type="checkbox" name="" id="choose5"><label for="choose5">备选项5</label></li>
+         <li><input type="checkbox" name="" id="choose6"><label for="choose6">备选项6</label></li>
+         <li><input type="checkbox" name="" id="choose7"><label for="choose7">备选项7</label></li>
+         <li><input type="checkbox" name="" id="choose8"><label for="choose8">备选项8</label></li>
+       </ul>
+     </div>
+     <div>
+       <button class="">&gt;</button>
+       <button>&lt;</button>
+     </div>
+    <div class="right">
+      <section>
+        <input type="checkbox" name="" id="chooseAll_right">
+        <label for="chooseAll_right">列表二</label>
+      </section>
+      <ul>
+        <li><input type="checkbox" name="" id="choose9"><label for="choose9">备选项9</label></li>
+        <li><input type="checkbox" name="" id="choose10"><label for="choose10">备选项10</label></li>
+        <li><input type="checkbox" name="" id="choose11"><label for="choose11">备选项11</label></li>
+      </ul>
+    </div>
+   </main>
+    <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+      //  对于全选事件进行操作
+      $('section input').change(function(){
+        var isall = $(this).prop('checked')?true:false
+         $(this).parent().next().find('input').prop('checked', isall)
+         isActive($(this).parent().next())
+      })
+
+      //封装一个函数用于判断哪个进行激活/取消
+      function isActive(el) {
+        // 通过el进行区域的判断
+        if(el.find(':checked').length){
+          // 有激活项
+          // 判断方向
+          var index = el.parent().hasClass('left')?0:1
+          $('button').eq(index).addClass('active')
+        }else{
+          // 没有激活
+          var index = el.parent().hasClass('left') ? 0 : 1
+          $('button').eq(index).removeClass('active')
+        }    
+      }
+
+      // 对单选进行事件绑定
+      $('ul input').change(function(){
+        // 每次点击构造时候都要检测当前被勾选的数量是否和总选项一致
+        // 一致表示被全选，反之则没有全选
+        var parent= $(this).parents().eq(1)
+        var isall= parent.find(':checked').length==parent.children().length?true:false
+        parent.prev().find('input').prop('checked',isall)
+        isActive(parent)
+      })
+
+      // 移动元素
+      $('button').click(function(){
+        $('section input').prop('checked',false)
+        // 获取按钮的对应的移动选项列表
+        var move_index=$(this).index()
+        // 获取到移动的目标列表
+        var index = move_index?0:1
+        $('ul').eq(move_index).find(':checked').prop('checked',false).parent().appendTo($('ul').eq(index))
+
+        isActive($('ul').eq(move_index))
+        
+      })
+
+   
+    </script>
+</body>
+</html>

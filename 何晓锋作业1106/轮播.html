@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: hidden;
+        }
+
+        main {
+            margin: 1vh 1vw;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        main>* {
+            display: inline-block;
+        }
+
+        main>div:nth-of-type(1) {
+            width: 70vw;
+            margin-right: 3vw;
+            position: relative;
+        }
+
+        main>div:nth-of-type(1)>img {
+            width: 70vw;
+            height: 100%;
+        }
+
+        main>div:nth-of-type(2) {
+            width: 25vw;
+            height: 100%;
+        }
+
+        main>div>div {
+            width: 100%;
+            position: relative;
+            opacity: 0.6;
+            cursor: pointer;
+        }
+
+        main>div>div>img {
+            width: 100%;
+            height: 24vh;
+            margin-bottom: 0.25vh;
+        }
+
+        p {
+            position: absolute;
+            width: 100%;
+            bottom: 0%;
+            line-height: 30px;
+            background-color: black;
+            opacity: 0.6;
+            /* backop */
+            margin-bottom: 0.5vh;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <img src="./imgs2/1.jpg" alt="">
+            <p>巴黎 埃菲尔铁塔</p>
+        </div>
+        <div class="smallimg">
+            <div>
+                <img src="./imgs2/1.jpg" alt="">
+                <p>巴黎 埃菲尔铁塔</p>
+            </div>
+            <div>
+                <img src="./imgs2/2.jpg" alt="">
+                <p>纽约 金门大桥</p>
+            </div>
+            <div>
+                <img src="./imgs2/3.jpg" alt="">
+                <p>上海 东方明珠</p>
+            </div>
+            <div>
+                <img src="./imgs2/4.jpg" alt="">
+                <p>中国 长城</p>
+            </div>
+    </main>
+    <script>
+        var imgs = document.querySelectorAll('img')
+        var p = document.querySelectorAll('p')
+        var content = document.querySelector('.content')
+        var mydiv = document.querySelectorAll('.smallimg div')
+        var changetype = 2
+        // 每个图片块都绑定方法
+        for (let i = 1; i < imgs.length; i++) {
+            mydiv[i-1].onclick = function() {
+                change(i)
+            }
+            console.log(mydiv[i-1]);
+            // console.log(i);
+        }
+
+        // 切换的方法
+        function change(num) {
+            console.log('num = ' + num);
+            content.innerHTML = '<img src="./imgs2/' + num + '.jpg" alt=""> <p>' + p[num].innerText + '</p>'
+            mydiv.forEach(item => {
+                item.style.opacity = 0.6
+            });
+            mydiv[num - 1].style.opacity = 1
+            changetype = num
+        }
+        change(1)
+
+        // 定时轮播
+        setInterval(() => {
+            change(changetype)
+            changetype++
+            if (changetype==5) {
+                changetype=1
+            }
+        }, 3000);
+    </script>
+</body>
+
+</html>

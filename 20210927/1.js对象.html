@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <!-- js的对象，也是数据存储类型中的一种，用于存储多个数据，
+      是无序存储，并且数据之间有关系 -->
+
+    <!-- 在对象中用于数据的存储方式是：键值对的方式存储（key:value） -->
+   
+    <script>
+      //  创建对象的方式：
+      // 1. 通过 new 实例化一个对象（实例化一个空对象）
+      //  var obj = new Object()
+      //  console.log(obj);
+
+
+      // 2. 通过字面量 的方式创建对象
+      var obj = {
+        name:'张三',
+        sex:'男',
+        address:'福建福州'
+      }
+      console.log(obj);
+
+      // 对 对象进行操作（直接打点('.')通过key来调用value）
+      // 查  
+      console.log(obj.name);
+      console.log(obj['name']);
+
+      // 增(直接调用一个新的key值，并且对其进行赋值)
+      obj.age=18
+      obj['phone']=123456789
+      console.log(obj);
+
+      // 改
+      obj.age=20
+      // obj['age'] = 20
+      console.log(obj);
+
+      // 删除
+      delete obj.phone
+      console.log(obj);
+
+
+      // 依次遍历输出对象中内容
+      // for (let index = 0; index < array.length; index++) {
+      //   const element = array[index]; 
+      // }
+      
+      // for (const key in obj) {
+      //   console.log(obj[key]);
+      // }
+
+
+
+     
+    </script>
+  
+
+</body>
+</html>

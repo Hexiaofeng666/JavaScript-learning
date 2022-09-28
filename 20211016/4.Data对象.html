@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Data 日期对象，对系统时间进行操作的对象 -->
+    <script>
+        // 获取时间
+        // 1.利用日期对象，先实例化一个Data对象
+        var now = new Date()
+        console.log(now); //获取中国标准时间
+
+        // 获取时间信息
+        var year = now.getFullYear()
+        console.log(year);
+
+        // 0~11表示1~12月份
+        var month = now.getMonth() + 1
+        console.log(month);
+
+        // 几号
+        var day = now.getDate()
+        console.log(day);
+
+        // 获取周天数
+        // 1~6表示周一~周六   周天为：0
+        var week = now.getDay()
+        console.log(week);
+
+        // 获取时间
+        var h = now.getHours()
+        console.log(h);
+
+        // 获取分
+        var m = now.getMinutes()
+        console.log(m);
+
+        // 获取秒
+        var s = now.getSeconds()
+        console.log(s);
+
+        // 将时间格式直接转为本地格式
+        console.log(now.toLocaleString());
+
+        // 获取时间戳(ms) 从1970.1.1到至今为止的一个时间戳  1s = 1000ms
+        console.log(now.getTime());
+
+        console.log(new Date('2008-01-01'));
+        console.log(new Date('2008/01/01'));
+        console.log(new Date('2001,01,01'));
+        console.log(new Date(151555511111));
+        console.log(new Date('2008年01月01日')); //Invalid Date
+
+        // 练习：输出从出生到现在生存了多少天
+        var old = new Date('1999.11.04')
+        // console.log(old);
+        var myday = now.getTime() - old.getTime()
+        myday = myday / 1000 / 60 / 60 / 24
+        console.log(myday);
+
+
+        console.clear();
+        // 修改时间
+        // 设置天数
+        // 设置为正数，即修改天数为第n号
+        // 设置为0，设置为上一个月的最后一天
+        // 设置为负数，即修改天数为上一个月的倒数第n-1号
+        // now.setDate(1)
+
+
+        // 设置月份(moth,date?(可传可不传))
+        now.setMonth(3, 1)
+
+        // ...
+        console.log(now);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main></main>
+    <script>
+        // var body = document.getElementsByTagName("main")[0];
+        //   console.log(body);
+        //   var one = document.createElement('div')
+        //   newa.innerText = '百度'
+        //   li[2].appendChild(newa);
+        // for (let i = 0; i < 4; i++) {
+        //     //   const element = array[i];
+        //     // var div= document.createElement('div')
+        //     // div.innerText = '百度'
+        //     // body.appendChild(div);
+        //     // body.innerHTML = '<div>百度</div>';
+
+
+        //     var newdiv = document.createElement('div') //<li><li>
+        //     //往新标签中添加新的内容 
+        //     // newdiv.innerText='新增加的li标签'
+        //     // 要将新的标签放到页面上的标签中（往父类的后后面添加新的子元素）
+        //     body.appendChild(newdiv)
+        //     // console.log(body);
+        //     // console.log(newdiv[0]);
+        //     var mydiv = document.querySelectorAll("div");
+        //     // mydiv[i].innerHTML = '<img></img>';
+        //     mydiv[i].innerHTML = `<img></img><p>第${i+1}张图片</p>`;
+        //     var myimg = document.querySelectorAll("img");
+        //     // myimg.src = `img/${i}.jpg`
+        //     // myimg.title = `<p>第${i}张</p>`;
+        //     myimg[i].setAttribute('src',`img/${i+1}.jpg`)
+        //     myimg[i].setAttribute('title',`<p>第${i+1}张</p>`)
+        // }
+
+
+
+
+
+
+        // 练习
+        var str = ''
+            var data = [['商品1','商品2','商品3','商品4'],[10,23,30,40]]
+            // console.log(data[0].length);
+                for (let i = 1; i <= data[0].length; i++) {
+                    if (data[1][i-1]>25) {
+                        str += '<li class="up"> 商品：商'+ i +'   价格：'+ data[1][i-1]+'</li/>'
+                    }
+                    else str += '<li> 商品：商'+ i +'   价格：'+ data[1][i-1]+'</li>'
+                }
+            str = '<ul>' + str + '</ul>'
+            document.querySelector('main').innerHTML = str
+    </script>
+</body>
+
+</html>

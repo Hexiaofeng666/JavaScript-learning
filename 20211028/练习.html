@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul{
+      position: fixed;
+      top:0;
+      width: 100%;
+      
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      left: 0;
+      display: flex;
+      padding: 5px;
+    }
+    li{
+      width: 40px;
+      height: 30px;
+      border: 1px solid black;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+   <ul style="background-color: pink;">
+     <li style="background-color: red;"></li>
+     <li style="background-color: orange;"></li>
+     <li style="background-color: yellow;"></li>
+     <li style="background-color: green;"></li>
+   </ul>
+
+   <!-- 点击不同的li标签给body设置背景色或者单独点击ul标签给body设置pink -->
+   <script>
+       var body = document.querySelector('body')
+       var ul = document.querySelector('ul')
+       var li = document.querySelectorAll('li')
+       ul.addEventListener('click',function(){
+            // 阻止冒泡
+            event.stopPropagation()
+            body.style.backgroundColor = "pink"
+        },false)
+        for (let i = 0; i < li.length; i++) {
+        //     li[i].addEventListener('click',function(){
+        //     // 阻止冒泡
+        //     event.stopPropagation()
+        //     body.style.backgroundColor = li[i].style.backgroundColor
+        // })
+        li[i].onclick = function(e){
+            e.stopPropagation()
+            document.body.style.backgroundColor=li[i].style.backgroundColor
+        }
+        }
+       
+   </script>
+</body>
+</html>

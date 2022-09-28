@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 数组也是js中用于存储数据的一个数据类型。存储多个数据，并且是有序存储
+    // 会自动给数组中的元素进行编号排序,也称为元素的索引值，
+    // 可以存储任意的数据类型
+
+    // 通过字面量的方式定义的数组
+    var arr = [1, 'a', null, true, null]
+    console.log(arr);
+
+    // 对数组进行操作
+    // 1.查
+    // 获取其中的一个指定内容
+    console.log(arr[3]);
+    // 获取某部分
+    // slice(开始索引值,结束索引值)
+    // 对于获取数组中的部分内容是：包头不包尾   返回的也是一个数组
+    console.log(arr.slice(0, 1));
+
+    // 只传递一个参数的时候，会从当前这个开始位置定位所以一直切到数组结束位置
+    console.log(arr.slice(2)); //null true null
+
+    // slice() 索引值如果为负数的话，是对查找的元素进行倒叙查找
+    console.log(arr.slice(-1));  // null
+
+    // 查看数组的长度
+    console.log(arr.length);
+
+    // 根据内容找到索引值,一旦找到符合要求的内容，立刻进行返回
+    console.log(arr.indexOf(null));  //2  从前面
+    console.log(arr.lastIndexOf(null));  //4  从后面
+
+    // console.clear()
+    // 增
+    // push 往数组的后添加新的元素(加一到多个)  改变原数组，并返回数组的长度
+    // arr.push('b','c','d','e')
+
+    //  unshift 往数组的前面添加新的元素(加一到多个) 改变原数组，并返回数组的长度
+    //  arr.unshift('b','c','d')
+
+    // splice(操作元素的索引位置,删除个数，添加的新内容1,添加的新内容2,添加的新内容3,....)
+    // arr.splice(3,0,'b')
+    // 改变原数组，并返回删除的元素
+    // console.log(arr); //[1, "a", null, true, null]
+    arr.splice(3, 0, 'b', 'c', 'd', 'e') 
+    // console.log(arr); //[1, "a", null, "b", "c", "d", "e", true, null]
+
+
+    // 删
+    // pop 将数组的尾部元素删除一个 改变原数组，并返回删除的元素
+    // arr.pop()
+    // shift 将数组的头部元素删除一个 改变原数组，并返回删除的元素
+    // arr.shift()
+
+    arr.splice(1, 5)
+    console.log(arr);
+
+
+    // 改(替换)
+    arr.splice(3, 1, 'b')
+    console.log(arr);
+
+
+    // 将数组转为字符串 join(连接依据)
+    console.log(arr.join('-'));
+
+    //  请在页面上打印出 ：1+2+3+4+5+6+7+...+88=xxx
+    //  1~88的数字要存储在数组中
+    var numarr = []
+    var sum = 0
+    for (var i = 1; i < 89; i++) {
+      sum += i
+      numarr.push(i)
+    }
+    console.log(numarr);
+    document.write(numarr.join('+') + '=' + sum)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <script>
+    //  js内置对象，js事先进行定义的对象，其中包含针对该类型对象中的处理方法和属性
+    // String对象是内置对象中的一个，含有所有有关处理字符串的相关操作
+
+    var str = 'I like Apple'
+    // ------- 查-------
+    // 字符串的长度由里面的内容个数决定
+    console.log(str.length);//12
+     
+    // 自动会给字符串中的每个内容进行索引值的编号，从0开始
+    // 根据索引值获取指定的内容
+    console.log(str.charAt(0)); // I
+    // 根据索引值获取指定内容的ASII编码
+    console.log(str.charCodeAt(0)); // 73
+
+    // 获取部分内容
+    // substr(开始索引,截取的长度)
+    // console.log(str.substr(2,4));
+    // console.log(str.substr(2));//从开始位置截取到字符串结束位置
+
+    // substring(开始索引，结束索引) 
+    // 包头不包尾
+    // console.log(str.substring(2,5));
+    // console.log(str.substring(2));//从开始位置截取到字符串结束位置
+
+    // slice(开始索引，结束索引) 
+    // 包头不包尾
+    // 索引值可以为负数，进行倒序查找
+    // console.log(str.slice(2,5));
+    // console.log(str.slice(-2));//le
+
+    // 字符的方法
+    //  判断字符串是否含有指定的内容(常用于搜索功能)，返回值：true/false
+    console.log(str.includes('text'));//false
+    console.log(str.includes('a'));//false
+    console.log(str.includes('A'));//true
+
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 练习：在页面上显示一个弹框，显示的内容是 ：1.计算矩形面积 或 2.圆的面积
+        // 选择序号后显示，显示第二个弹框：请输入矩形的宽和高， 或圆的半径
+        // 封装一个函数area，用于计算面积，并且对面积保留两位小数
+        // var choiceone = prompt('1.计算矩形面积 或 2.圆的面积')
+        // console.log(Math.PI);
+        // var pi = Math.PI
+        // function area() {
+        //     if (choiceone == 1) {
+        //         var choiceheight = prompt('请输入矩形的高')
+        //         var choicewidth = prompt('请输入矩形的宽')
+                
+        //         alert('矩形的面积是' + choiceheight*choicewidth)
+        //     }
+        //     else if(choiceone == 2){
+        //         var choicetwo = prompt('请输入圆的半径')
+        //         alert('矩形的面积是' + (choicetwo*choicetwo*pi/2).toFixed(2))
+        //     }
+        // }
+        // area()1
+
+        var choiceone = prompt('1.计算矩形面积 或 2.圆的面积')
+        var pi = Math.PI
+        function area(num1,num2) {
+            if (num2) {
+                return num1*num2
+            }
+            else{
+                return (num1*num1*pi/2).toFixed(2)
+            }
+        }
+        if (choiceone == 1) {
+                var choicetwo = prompt('请输入矩形的高和宽')
+                var arr = choicetwo.split('')
+                alert('矩形的面积是' + area(arr[0],arr[2]))
+            }
+            else if(choiceone == 2){
+                var choicetwo = prompt('请输入圆的半径')
+                alert('矩形的面积是' + area(choicetwo))
+            }
+    </script>
+</body>
+
+</html>

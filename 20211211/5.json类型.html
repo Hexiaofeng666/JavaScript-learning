@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- json是一种轻量级的数据类型，常用于前后端交互的一种数据格式 -->
+    <!-- 是一种类型属于对象的数据格式(本质上是字符串格式的对象) -->
+    <script>
+        var obj = {
+            name:'Amy',
+            age:19,
+            address:'福建福州'
+        }
+
+        // JSON格式，和对象一样是采用对象键值对方式对数据进行存储，但是key和value都必须使用
+        // ""进行包裹
+        // var obj = {
+        //     "name":"Amy",
+        //     "age":"19",
+        //     "address":"福建福州"
+        // }
+        console.log(obj);
+        // 将obj对象转为JSON字符串格式
+        var data= JSON.stringify(obj)
+        console.log(data);
+        document.body.innerHTML=data
+
+        
+        // 将JSON字符串重新转为对象(新对象)
+        var boy = JSON.parse(data)
+        boy.name = '张三'
+        console.log(boy);
+        console.log(obj);
+        // console.log(boy.name);
+
+        // 利用json的数据转换，可以解决引用类型(针对object)的数据复制问题
+    </script>
+</body>
+</html>

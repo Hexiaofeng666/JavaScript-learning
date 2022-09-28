@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        body>p:nth-child(even) {
+            color: red;
+        }
+
+        p:nth-child(5) {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="one">
+        <p></p>
+    </section>
+    <div></div>
+    <p>1</p>
+    <p>2</p>
+    <!-- <p></p> -->
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <!-- <p>6</p> -->
+    <p>64</p>
+    <p>
+        7
+        <i>斜体</i>
+    </p>
+    <script>
+        // jq中对于标签的选择是采用css选择器的方式
+        console.log($('div,p,.one'));
+        console.log($('one p'));
+
+        //  :first 帮助找到匹配元素集合中第一个标签
+        console.log($('body>p:first'));
+        //  :last 帮助找到匹配元素集合中最后一个标签
+        console.log($('body>p:last'));
+
+        //  :eq(index) 找到匹配元素集合中指定的标签
+        console.log($('body>p:eq(1)'));
+
+        // :even 查找匹配元素集合中索引值为偶数
+        console.log($('body>p:even'));
+
+        // :odd 查找匹配元素集合中索引值为奇数
+
+        // :not(条件)  将符合条件的元素从元素集合中先剔除
+        console.log($('body>p:not(:first)'));
+
+        console.clear()
+        // :gt >     :lt <   找到匹配元素集合中大于/小于指定索引值的标签，
+        // 如下: 索引值小于4
+        console.log($('body>p:lt(4)'));
+
+        // :header 找到所有标题标签，如： h1 h2 h3...
+        // :animated 找到当前正在做动画的标签
+
+        // contains 找到匹配标签中的内容含有指定内容的标签
+        console.log($('body>p:contains("4")'));
+
+        // has  找到匹配元素集合中含有指定的选择器的标签
+        console.log($('p:has("i")'));
+
+        // empty筛选空标签
+        console.log($('p:empty'));
+
+        // parent跟empty相反，找到匹配含有子元素或者文本的元素(即：找到不为空的标签)
+        console.log($('p:parent'));
+
+        // :visible 对显示的标签进行查找  
+        console.log($('body>p:visible'));
+
+        // :hidden  对隐藏的标签进行查找  (display:none;)
+        console.log($('body>p:hidden'));
+    </script>
+</body>
+
+</html>

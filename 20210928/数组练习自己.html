@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      width: 600px;
+    }
+  </style>
+</head>
+
+<body>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>商品</th>
+        <th>价格</th>
+        <th>产地</th>
+      </tr>
+
+    </thead>
+  </table>
+  <script>
+    var prolist = [{
+        title: '牙刷',
+        price: 12,
+        address: '福建福州'
+      },
+      {
+        title: '铅笔',
+        price: 8,
+        address: '福建泉州'
+      },
+      {
+        title: '被子',
+        price: 130,
+        address: '河南郑州'
+      },
+      {
+        title: '杯子',
+        price: 56,
+        address: '浙江杭州'
+      },
+      {
+        title: '毛巾',
+        price: 89,
+        address: '上海'
+      },
+    ]
+    var myth = document.querySelector("thead")
+      prolist.forEach(function (item, index) {
+        var newtr = document.createElement('tr')
+        myth.appendChild(newtr)
+        var arr = []
+        arr.push(item.title,item.price,item.address)
+        arr.forEach(function(i,j){
+          var newth = document.createElement('th')
+          newth.innerText = i
+          myth.appendChild(newth)
+        })
+        // console.log(arr);
+      })
+
+    // }
+  </script>
+</body>
+
+</html>

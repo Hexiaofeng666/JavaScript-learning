@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery穿梭框左右列表添加删除代码</title>
+    <!-- <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script> -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .selection-container {
+            height: 350px;
+            margin: 10px;
+        }
+
+        .select-box {
+            width: 250px;
+            height: 100%;
+            float: left;
+            border: 1px solid #ebeef5;
+            border-radius: 4px;
+        }
+
+        .arrows-box {
+            width: 110px;
+            height: 100%;
+            float: left;
+            position: relative;
+        }
+
+        .select-content {
+            width: 100%;
+            height: 320px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .select-box-title {
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            font-family: "寰蒋闆呴粦";
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            background: #f5f7fa;
+            border-bottom: 1px solid #ebeef5;
+            box-sizing: border-box;
+            color: #000;
+        }
+
+        /*.checkbox-all{
+		float:left;
+	}*/
+        .select-box-title label:before {
+            left: -14px !important;
+            top: 4px !important;
+        }
+
+        .select-box-title label:after {
+            left: -10px !important;
+            top: 5px !important;
+        }
+
+        .checkboxs {
+            vertical-align: middle;
+        }
+
+        .unselect-ul {
+            padding: 10px 0;
+        }
+
+        .selected-ul {
+            padding: 10px 0;
+        }
+
+        .select-content li {
+            padding: 5px 15px;
+            font-size: 12px;
+            font-family: "寰蒋闆呴粦";
+        }
+
+        .select-box input[type='checkbox'] {
+            position: absolute;
+            left: 13px;
+            top: 3px;
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+        }
+
+        .select-box label {
+            position: absolute;
+            left: 30px;
+            top: 9px;
+            height: 20px;
+            line-height: 20px;
+        }
+
+        .select-box span {
+            padding-left: 20px;
+        }
+
+        .select-box label:before {
+            content: '';
+            position: absolute;
+            left: -14px;
+            top: -3px;
+            width: 12px;
+            height: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+        }
+
+        .select-box label:after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: -2px;
+            width: 4px;
+            height: 8px;
+            border: 0;
+            border-right: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            background: #fff;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+        }
+
+        .select-box input[type='checkbox']:checked+label:before {
+            background: #00A0E8;
+            border-color: #00A0E8;
+        }
+
+        .select-box input[type='checkbox']:checked+label:after {
+            background: #00A0E8;
+        }
+
+        .arrow-btns {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            margin-top: -45px;
+        }
+
+        .btn-cursor {
+            background-color: #409eff !important;
+            border: 1px solid #409EFF !important;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+        }
+
+        .btn-cursor svg {
+            fill: #fff !important;
+            transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+        }
+
+        /*.btn-cursor{
+		cursor: not-allowed !important;
+	}*/
+        .arrow-btn {
+            display: block;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 25px;
+            background: #eee;
+            margin: 0 auto 5px;
+            cursor: pointer;
+            border: 1px solid #dcdfe6;
+            background-color: #f5f7fa;
+            color: #c0c4cc;
+            outline: none;
+        }
+
+        .arrow-btn svg {
+            padding: 11px;
+            width: 17px;
+            height: 17px;
+            color: white;
+            fill: #C0C4CC;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="selection-container">
+        <div class="select-box left">
+            <div class="select-box-title">
+                <input type="checkbox" class="checkbox-all" id="checkbox-all1" />
+                <label for="checkbox-all1"></label>
+                <span>列表一</span>
+            </div>
+            <div class="select-content">
+                <ul class="unselect-ul">
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue1" />
+                        <label for="tyue-checkbox-blue1"></label>
+                        <span>备选项1</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue2" />
+                        <label for="tyue-checkbox-blue2"></label>
+                        <span>备选项2</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue3" />
+                        <label for="tyue-checkbox-blue3"></label>
+                        <span>备选项3</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue4" />
+                        <label for="tyue-checkbox-blue4"></label>
+                        <span>备选项4</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue5" />
+                        <label for="tyue-checkbox-blue5"></label>
+                        <span>备选项5</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue6" />
+                        <label for="tyue-checkbox-blue6"></label>
+                        <span>备选项6</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue7" />
+                        <label for="tyue-checkbox-blue7"></label>
+                        <span>备选项7</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue8" />
+                        <label for="tyue-checkbox-blue8"></label>
+                        <span>备选项8</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="arrows-box">
+            <div class="arrow-btns">
+                <button class="arrow-btn right">
+                    <svg class="icon icon-seach" aria-hidden="true">
+                        <use xlink:href="#icon-com-dajiantouyou"></use>
+                    </svg>
+                </button>
+                <button class="arrow-btn left">
+                    <svg class="icon icon-seach" aria-hidden="true">
+                        <use xlink:href="#icon-com-dajiantouzuo"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="select-box right">
+            <div class="select-box-title">
+                <input type="checkbox" class="checkbox-all" id="checkbox-all2" />
+                <label for="checkbox-all2"></label>
+                <span>列表二</span>
+            </div>
+            <div class="select-content">
+                <ul class="selected-ul">
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue9" />
+                        <label for="tyue-checkbox-blue9"></label>
+                        <span>备选项9</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue10" />
+                        <label for="tyue-checkbox-blue10"></label>
+                        <span>备选项10</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checkboxs" id="tyue-checkbox-blue11" />
+                        <label for="tyue-checkbox-blue11"></label>
+                        <span>备选项11</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

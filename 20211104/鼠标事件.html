@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+    }
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      margin: 50px;
+    }
+  </style>
+</head>
+<body>
+    <div></div>
+    <script>
+      // 鼠标事件类型：click  dblclick   mouseover/mouseeenter
+      //              mouseout/mouseleave   mousemove
+
+      var div = document.querySelector('div')
+      div.onmousedown=function(){
+        // console.log('鼠标按下');
+      }
+     
+       div.onmouseup = function (e) {
+        //  offsetX/offsetY 指的是鼠标距离当前点击元素产生的间距
+          // console.log(e.offsetX);
+        
+        // clientX/clientY 指的是鼠标距离页面窗口（浏览器窗口）左上角之间的间距
+          console.log(e.clientX);
+         
+        //  以document对象（文档窗口）左上角为原点，之间产生的间距
+          console.log(e.pageX);
+          // console.log('鼠标抬起');
+          
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: pink;
+        }
+        .newcss{
+            width: 200px;
+            height: 300px;
+            background-color: white;
+            margin: 20px;
+            display: inline-block;
+        }
+        .newseconddiv{
+            background-color: orange;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 50px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="add()">添加便利贴</button>
+    <button onclick="clearAll()">清空便利贴</button>
+    <main></main>
+    <script>
+        var main = document.querySelector("main");
+       
+        function add(){
+            // main.insertBefore(newdiv,main.children[0]);
+             // 定义一个便利贴
+        var newdiv = document.createElement('div');
+        newdiv.classList.add("newcss");
+        var newseconddiv = document.createElement('div');
+        newseconddiv.classList.add("newseconddiv");
+        // newseconddiv.setAttribute("contenteditable","true")
+        // 定义两个按钮
+        var newbtn = document.createElement('button');
+        var newbtntwo = document.createElement('button');
+        newbtn.innerText="+"
+        newbtntwo.innerText="x"
+        // 添加节点
+        main.appendChild(newdiv)
+        newdiv.appendChild(newseconddiv)
+        newseconddiv.appendChild(newbtn)
+        newseconddiv.appendChild(newbtntwo)
+        newbtn.onclick =  add;
+        main.appendChild(newdiv);
+        newbtntwo.onclick = function clear(){
+            main.removeChild(newdiv)
+        }
+        }
+        function clearAll(){
+            main.innerHTML = "";
+        }
+        
+    </script>
+</body>
+</html>

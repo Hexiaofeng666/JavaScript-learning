@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      // 控制台日志输出，检测bug
+      //  console.log()
+
+      // 移动端检测：
+      // alert()
+       
+
+      // 通过控制台进行断点检测
+      // 利用控制台中Sources 中进行代码打断点
+      // 当代码执行到断点的时候，不会继续往下执行，此时将鼠标移动到需要查看的变量时
+      //  就可以进行代码检测
+      // 断点操作： F8  从当前这个断点执行到下一个断点才停
+      //           F10 从当前这个断点往下一行进行执行
+      var a = 10
+      // a++
+      // console.log(a);
+      debugger // 通过代码的方式进行断点设置
+      for (var i = 1; i < 5; i++) {
+        a=a+5
+      }
+
+      console.log(a);
+      
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="one" class="two">1</div>
+    <div class="two" name='el'>2</div>
+    <div class="two" name='el'>3</div>
+
+    <!-- 在不改动代码情况下，获取div中的img标签 -->
+    <div>
+        <img src="" alt="">
+    </div>
+    <img src="" alt="">
+    <!-- 依次输出标签 -->
+    <img src="" alt="">
+    <section>01</section>
+    <section>02</section>
+    <section>03</section>
+    <section>04</section>
+    <section>05</section>
+    <script>
+
+
+        // js运行脚本中，不能直接对body中的DOM元素进行操作
+        // 所以，js针对DOM操作封装很多的方法
+        // DOM ： document（文档），就是对页面的标签进行操作
+        // console.log(div);报错  no defined
+
+        // 获取方式1
+        // 通过id获取标签，有且仅有一个(id的唯一性),并且返回时一个具体的标签
+        // var div = document.getElementById('one');
+        // 通过class名获取标签，将符合条件的所有标签都获取到，并且返回一个数组集合
+        // 数组集合是用于存储多个数据，并且会自动给里面存储的数据进行编号
+        //排序默认从o开始，取里面其中一个数据，通过下标值（编号获取)
+        // var divs = document.getElementsByClassName("two");
+        // console.log(div);
+        // console.log(divs);
+
+        // 通过标签获取
+        // var els = document.getElementsByTagName('div');
+        // console.log(els);
+
+        // 通过name属性，将符合条件的所有标签都获取到，并且返回一个数组集合
+        // var elements = document.getElementsByName('el');
+        // console.log(elements);
+
+        var el = document.getElementsByTagName("img");
+        console.log(el[0]);
+        var els = document.getElementsByTagName("section");
+        // console.log(els[0]);
+        console.log(els);
+        for (let i = 0; i < els.length; i++) {
+            console.log(els[i]);
+        }
+        // 仿造css方式获取标签
+        // querySelector 获取到符合条件中所有标签的第一个，返回的是一个具体标签
+        var div = document.querySelector('section div');
+        console.log(div);
+
+        // querySelectorAll 将符合条件的所有标签都获取到，并且返回一个数组集合
+        var el_div = document.querySelectorAll( 'div');
+        console.log(el_div);
+
+        
+    </script>
+</body>
+</html>

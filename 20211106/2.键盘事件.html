@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 键盘事件：通过键盘进行触发
+        document.onkeydown = function (e) {
+            // 键盘事件参数中，含有按下的按键信息
+            console.log('键盘按下');
+            console.log(event);
+            console.log(event.code);
+            console.log(event.key);
+            // 获取按键内容对应的asii编码
+            console.log(event.keyCode);
+
+        }
+        document.onkeypress = function (e) {
+            //针对的是按键按下后会影响屏幕中内容的显示才触发的
+            // console.log(e.key);
+            // console.log(e.keyCode);
+        }
+
+        // keydown和keypress都是健盘按下事件
+
+        //抬起事件
+        document.onkeyup = function (e) {
+            // console.log('键盘抬起触发');
+        }
+    </script>
+</body>
+
+</html>

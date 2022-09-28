@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  这是第三个页面：3
+  <button>返回前一个页面</button>
+  <button>返回前前一个页面</button>
+  <button>进入页面1</button>
+  <button>进入页面2</button>
+  <script>
+    document.querySelectorAll('button')[0].onclick = function () {
+      // go 指定到多少历史记录中
+      // 负数：往前返回多少条记录（back）
+      // 正数： 往后返回多少条记录（forward）
+      history.go(-1)
+    }
+    document.querySelectorAll('button')[1].onclick = function () {
+      history.go(-2)
+    }
+
+
+
+
+
+
+
+    
+    document.querySelectorAll('button')[2].onclick = function () {
+      location.href='./first.html'
+    }
+    document.querySelectorAll('button')[3].onclick = function () {
+      location.href='./second.html'
+    }
+  </script>
+</body>
+</html>

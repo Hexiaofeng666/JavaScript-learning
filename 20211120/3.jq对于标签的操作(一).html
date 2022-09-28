@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+   <div></div>
+   <i>斜体</i>
+   <script>
+    //  1.添加标签
+
+
+    // 一： 添加都是子元素
+    // 1.1 append 往标签的后面添加新的元素（主动添加）
+    $('div').append('<p>文本</p>')
+    // 是将i标签移动到div中
+    // $('div').append($('i'))
+
+    // appendTo （被动添加）
+    // 将子类往父类后面插入进去
+    $('<em>斜体2</em>').appendTo($('div'))
+
+    // 1.2 prepend 往标签的前面添加新的元素 （主动添加）
+    $('div').prepend('<b>加粗</b>')
+    // prependTo 将子类往父类前面插入进去（被动添加）
+    $('<u>下划线</ul>').prependTo($('div'))
+
+    // 1.3hmlt和innerHTML 同理，会将内容的标签进行渲染。并且内容会发生覆盖
+    // text和innerText 同理，渲染纯文本和获取纯文本
+    $('div').html($('div').html()+'<del>删除线</del>')
+
+
+
+    // 二：添加兄弟元素
+    // 2.1 往匹配元素后面添加相邻兄弟标签
+    $('div').after('<section>11</section>')
+
+    // 2.2 before 往匹配元素前面添加相邻兄弟标签
+    $('div').before('<section>22</section>')
+
+    // $('A').before(B)  将B插入到A的前面
+    // $('div').before('<section>33</section>')
+    
+    // $('A').insertBefore(B) 将A插入到B的前面
+    // $('A').insertAfter(B)  将A插入到B的后面
+    $('<section>33</section>').insertBefore($('div'))
+
+
+    // 三:插入父元素
+    // 3.1. 给每个匹配元素都包裹一个父元素div
+    // $('section').wrap('<div></div>')
+
+    // 3.2.给匹配的元素共同包裹一个父元素div
+    $('section').wrapAll('<div></div>')
+
+
+    // 3.3拆除匹配元素的父元素
+    $('section').unwrap()
+
+    // 3.4 wrapInner 将“匹配元素内的子元素”添加父类
+    $('div').wrapInner('<main></main>')
+
+    
+    // clone() 复制(将i复制一份给div)
+    $('div').append($('i').clone())
+      
+
+
+   </script>
+</body>
+</html>

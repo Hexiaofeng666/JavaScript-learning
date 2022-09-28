@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script>
+    // 1.对元素进行事件绑定
+    // $('div').click(function(){
+    //   console.log('点击事件');
+    // })
+
+    // 2.对事件的绑定方式： on
+    // $('div').on('click',function(){
+    //   console.log('通过on进行事件的绑定');
+    // })
+
+    // 同时对标签进行多个不同事件的绑定
+    // $('div').on({
+    //   click:function(){
+    //     console.log('点击事件')
+    //   },
+    //   mouseover:function(){
+    //     $(this).css('background-color','orange')
+    //   }
+    // })
+    // setTimeout(function(){
+    //   $('div').append('<span>点击后出现弹框</span>')
+    // }, 2000);
+
+    // 动态添加的标签，会出现事件无法绑定
+    // $('span').click(function() {
+    //   alert('弹框')
+    // })
+
+    // 进行事件委托
+    // $('div').on('click','span',function(){
+    //   console.log(this);
+    //   alert('弹框')
+    // })
+
+    // 移除事件
+    // 移除div身上所有的绑定事件
+    // $('div').off()
+
+    // 移除div身上某个事件
+    // $('div').off('click')
+
+    // one 设置事件只执行一次
+    // $('div').one('mouseleave',function(){
+    //   this.style.backgroundColor='blue'
+    // })
+
+
+
+    // 切换事件
+    // $('div').mouseover(function(){ })
+    // $('div').mouseout(function () {})
+
+    $('div').hover(function () {
+      // 鼠标移入触发
+      this.style.backgroundColor = 'red'
+    }, function () {
+      // 鼠标移出触发
+      this.style.backgroundColor = 'yellow'
+
+    })
+  </script>
+</body>
+
+</html>

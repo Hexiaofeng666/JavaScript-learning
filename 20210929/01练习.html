@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var res = prompt("品有1：可乐3元，2：雪碧3元，3：景甜矿泉水1.5元，4：橙子1.5元，5：椰子4元，6：八宝粥3元，请输入您需要的商品编号");
+        console.log(res);
+        // console.log();
+        var s = 0;
+        if (res < 1 || res > 6) {
+            alert("输入错误，请重输");
+        } else {
+            var num = prompt("请输入数量");
+            switch (parseInt(res)) {
+                case 1:
+                    s = num*3;
+                    console.log(s);
+                    break;
+                case 2:
+                    s = num * 3;
+                    break;
+                case 3:
+                    s = num * 1.5;
+                    break;
+                case 4:
+                    s = num * 1.5;
+                    break;
+                case 5:
+                    s = num * 4;
+                    break;
+                    case 6:
+                    s = num * 3;
+                    break;
+                default:
+                    break;
+            }
+            alert(s + "元");
+        }
+    </script>
+</body>
+
+</html>

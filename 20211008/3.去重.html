@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr = [2, 3, 5, 3, 2, 1, 2, 7, 1, 2, 2, 5, 1, 1, 1, 1, 9, 3, 0]
+
+    // 方式一：
+    // for (var i = 0; i < arr.length; i++) {
+    //   for(var j = i+1;j<arr.length;j++){
+    //     if(arr[i]==arr[j]){
+    //       arr.splice(j,1)
+    //       j--
+    //     }
+    //   }
+    // }
+    // console.log(arr);
+
+    // 方式二：
+    var newarr=[]
+    for (var i = 0; i < arr.length; i++) {
+      if(newarr.indexOf(arr[i])==-1){
+        // 不存在该元素
+        newarr.push(arr[i])
+      }
+    }
+    console.log(newarr);
+  </script>
+</body>
+</html>

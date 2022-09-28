@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1.通过js进行数据渲染 -->
+  <!-- 2. 通过搜索的关键字对书籍名进行，进行关键字搜索，将书名中含
+    有搜索关键字的书籍都渲染到页面上 -->
+  <input type="text" placeholder="搜索">
+  <main></main>
+  
+  <script>
+    var data= [{
+        img: "http://img3m8.ddimg.cn/56/9/28986068-1_l_3.jpg",
+        oldPrice: "¥29.80",
+        price: "¥11.60",
+        title: "高情商表达"
+      }, {
+        img: "http://img3m4.ddimg.cn/72/28/28997964-1_l_1.jpg",
+        oldPrice: "¥48.00",
+        price: "¥20.10",
+        title: "唐诗里的烟火人间（当当独家签章版）"
+      }, {
+        img: "http://img3m7.ddimg.cn/48/5/28998237-1_l_9.jpg",
+        oldPrice: "¥49.00",
+        price: "¥24.50",
+        title: "常青藤爸爸对话特级教师：每个孩子都能学好作文"
+      }, {
+        img: "http://img3m1.ddimg.cn/94/31/26193811-1_l_22.jpg",
+        oldPrice: "¥49.80",
+        price: "¥24.90",
+        title: "共情的力量：情商高的人，如何抚慰受伤的灵魂"
+      }, {
+        img: "http://img3m2.ddimg.cn/88/10/29134402-1_l_3.jpg",
+        oldPrice: "¥38.00",
+        price: "¥30.00",
+        title: "凛冬将至（当当独家限量签名版）"
+      }, {
+        img: "http://img3m4.ddimg.cn/59/30/28548194-1_l_9.jpg",
+        oldPrice: "¥89.00",
+        price: "¥40.10",
+        title: "国富论(上下册）（全译本、无删减本、畅读本，独家赠送概念导图）"
+      }, {
+        img: "http://img3m4.ddimg.cn/84/27/29114994-1_l_6.jpg",
+        oldPrice: "¥71.00",
+        price: "¥56.80",
+        title: "物种起源 入选中小学生阅读指导目录(2020年版）（高中段）当当独家 团购电话4001066666转6"
+      }, {
+        img: "http://img3m5.ddimg.cn/8/25/29001365-1_l_5.jpg",
+        oldPrice: "¥58.00",
+        price: "¥29.00",
+        title: "丑八怪:对校园霸凌大声说“不”,学会正确保护自己"
+      }, {
+        img: "http://img3m1.ddimg.cn/60/3/28994091-1_l_21.jpg",
+        oldPrice: "¥215.00",
+        price: "¥107.50",
+        title: "不可不知的科学系列（精装全4册，国际畅销图书“不可不知系列”重磅来袭，畅销作者，新锐绘者，科学、人体、地球、宇宙，前沿知识、身边科学一网打尽）"
+      }, {
+        img: "http://img3m3.ddimg.cn/53/15/29116943-1_l_6.jpg",
+        oldPrice: "¥276.00",
+        price: "¥138.00",
+        title: "迪士尼经典动画英文电影故事（20册套装）"
+      }]
+    var main = document.querySelector('main')
+    var input = document.querySelector('input')
+
+    function initData(arr){
+       var str=''
+        for (let i = 0; i < arr.length; i++) {
+        str+=`
+            <div>
+              <img src="${arr[i].img}" alt="">
+              <p>《${arr[i].title}》</p>
+              <p>现价：${arr[i].price}  原价：<del>${arr[i].oldPrice}</del></p>
+            </div>
+        `
+        }
+        main.innerHTML=str
+    }
+    initData(data)
+  
+
+    input.oninput=function(){
+      var newData = data.filter(function(item){
+        if(item.title.includes(input.value)) return item
+      })
+      initData(newData)
+    }
+  </script>
+</body>
+</html>

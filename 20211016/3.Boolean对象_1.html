@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   
+   <script>
+    // 1.对boolean对象进行转型
+    var str='10'
+    console.log(Boolean(str));//true
+    // 强制类型转换
+    console.log(!!str);//true
+
+    console.log(!!'');//false
+    console.log(!null);//true
+    console.log(!!!undefined);//true
+    console.log(!'false');//false
+    console.log(!!!true);//false
+   
+    // 将boolean转为字符串
+    console.log(true.toString());
+    
+    console.log(new Boolean(100));
+    // 通过new Boolean 创建对象方法进行转型的，作为判断使用的时候一定为真
+    if(new Boolean(10)){
+      console.log('真');
+    }else{
+      console.log('假');
+    }
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>0</p>
+  <script>
+    // 定时器：设定一个时间，进行事件的执行
+    // setInterval(事件,时间ms)
+    // 每间隔多少时间，重复执行该事件
+    // 不手动进行关闭，是不会自动停止
+    var time = setInterval(function () {
+      var num = document.querySelector('p').innerText
+      //  console.log(num);
+      if (num > 10) {
+        // 清除定时器
+        clearInterval(time)
+      } else {
+        document.querySelector('p').innerText = num * 1 + 1  //最后会到11
+      }
+    }, 1000);
+
+
+
+
+    // 延时器，一段时间之后才会执行
+    // 只执行一次
+    setTimeout(function () {
+      alert('5秒后才出现')
+    }, 5000);
+  </script>
+</body>
+
+</html>

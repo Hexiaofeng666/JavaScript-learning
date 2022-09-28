@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button>01</button>
+  <button>02</button>
+  <button>03</button><button>04</button><button>05</button>
+
+    <script>
+      // js:BOM + DOM + ECMAScropt（es）核心
+      // es6是ECMA的第六个版本,基本上目前各大浏览器都支持该语法
+
+      // 1.定义变量
+      // var 定义变量的关键字，定义全局变量和局部变量
+      // var a=10
+
+      // function add() {
+      //   var b=40
+      //   console.log(a);
+      // }
+      // add()
+      // console.log(b);
+     
+      // 只有函数会有自己的局部作用域，此时for循环没有自己的作用域，导致for循环中的i发生泄露
+      // 为了解决该问题,提供一个新的定义变量的关键字： let
+      // let 会产生一个块级作用域
+      // var i=10
+      for (let i = 1; i <= 1; i++) {
+        // 代码块
+         console.log(i);//1
+      }
+      // console.log(i);//报错
+
+      var btns = document.querySelectorAll('button')
+      // for (var i = 0; i < btns.length; i++) {
+      //    btns[i].index=i
+      //    btns[i].onclick=function(){
+      //      console.log(this.index);
+      //    }
+      // }
+      // 也可以这样编写
+      for (let i = 0; i < btns.length; i++) {
+          btns[i].onclick = function () {
+            console.log(i);
+          }
+        }
+
+
+      // 2.const 常量（固定值，不可以改变）
+      const num =10
+      // num=50
+      console.log(num);
+
+
+      // 3.字符模板（用于数据渲染）
+      var arr=[
+        {name:'三国演义',price:30},
+        {name:'红楼梦',price:321},
+        {name:'西游记',price:123},
+        { name: '水浒传', price: 60 },
+      ]
+
+      var str=''
+      for (let i = 0; i < arr.length; i++) {
+        // 字符串不能换行。并且如果变量比较多的时候，插入会容易造成混乱
+        // str+='<div><span>书名：'+arr[i].name+'</span><span>价格：'+arr[i].price+'</span></div>'
+         
+        // es6字符模板： `模板结构`,模板的变量使用 ${变量}
+        // 结构类型html的结构编写，对于布局上更加清晰
+        str+=` <div>
+                  <span>书名：《${arr[i].name}》</span>
+                  <span>价格：${arr[i].price}</span>
+                </div>
+              `
+      }
+      document.body.innerHTML+=str
+    </script>
+</body>
+</html>

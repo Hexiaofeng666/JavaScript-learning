@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button{
+      margin-right: 10px;
+    }
+    main{
+      background-color: pink;
+      min-height: 530px;
+      margin-top: 10px;
+      padding: 10px;
+    }
+    .node{
+      width: 200px;
+      border: 1px solid black;
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    .node section{
+      background-color: orange;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 9px;
+    }
+    .node div{
+      background-color: white;
+      min-height: 150px;
+      outline: none;
+    }
+ 
+  </style>
+</head>
+<body>
+  <button>添加便利贴</button><button>清空便利贴</button>
+
+  <main></main>
+  <script>
+    var btns = document.querySelectorAll('button')
+    var main = document.querySelector('main')
+
+    function add(){
+      // 添加
+      var div = document.createElement('div')
+      div.className = 'node'
+      // contenteditable   div加上该属性就能进行编辑
+      div.innerHTML = '<section><span>+</span><span>&times;</span></section><div contenteditable="true"></div>'
+      main.appendChild(div)
+
+      // console.log(div.children[0].children);
+      // 进行加号/删除号的事件绑定
+      var spans = div.children[0].children
+      spans[0].onclick = function () {
+        add()
+      }
+      spans[1].onclick=function(){
+        // 删除
+        // console.log(this.parentElement.parentElement);
+        this.parentElement.parentElement.remove()
+      }
+    }
+    
+    btns[0].onclick=function(){
+      add()
+    }
+
+    btns[1].onclick=function(){
+      // 清空便利贴
+      main.innerHTML=''
+    }
+
+    
+
+  </script>
+</body>
+</html>

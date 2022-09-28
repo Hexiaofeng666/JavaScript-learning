@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 制作一个四位数的随机验证码，要有两个字符，两个数字
+        // 四个字符串随机位置，数字不能出现重复
+
+        var arr = [2, 3, 1, 5, 2, 0, 1, 3, 6, 2, 0]
+        var str = ['a', 'g', 'e', 's']
+        var newstr = [...arr, ...str]
+        var result = []
+        var myresult=[]
+        var a=0
+        var b=0
+        function add() {
+            var num = Math.floor(Math.random() * newstr.length)
+            if (isNaN(newstr[num])) {
+                b++
+            }
+            console.log(a,b);
+            console.log(isNaN(newstr[num]));
+            result.push(newstr[num])
+            // var setarr = new Set(numarr)
+            var myresults = new Set(result)
+            result=[...myresults]
+            if (result.length < 4) {
+                add()
+            }
+            result = [...result]
+            return result
+        }
+        add()
+        console.log(...result);
+    </script>
+</body>
+
+</html>

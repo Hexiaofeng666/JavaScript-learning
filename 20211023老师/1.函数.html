@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      //  函数作用： 
+      // 特点1：
+      // 对于需要重复执行的代码块进行封装，之后直接通过函数名就可
+      // 重置执行里面的代码块内容，提供代码执行效率，减少代码的冗余度
+
+      // 定义函数方式： function 函数名(param1?,param2?,param3?,....){代码块}
+      
+      // 函数封装后，若不调用，内部代码是不会执行
+      function fun() {
+        console.log(1);
+      }
+      // 调用函数
+      fun()
+      // fun()
+      // fun()
+
+      // 特点2：函数会产生独立的作用域，函数中定义的变量/参数只能在函数内部使用
+      // 全局变量 a(在当前这个js环境的任意位置都能进行操作)
+      
+      for (var i = 0; i <10; i++) {}
+      // var a =10 
+      // console.log(a);
+      // console.log(i);
+
+    //  var c
+      // function num() {
+      //   // 局部作用域
+      //   var a = 40
+      //   var b  =20
+      //    c  =20+40
+      //   console.log(a);
+      // }
+      // num()
+      // console.log(c);
+   
+      // console.log(a); 报错
+
+
+      // 函数的展现方式：
+      // 1. 无参无返回值
+      function fun2() {
+        // 将所有处理数据和过程都一致放在该函数内，并且函数处理结果外部不使用
+        console.log(3);
+      }
+      // fun2()
+
+
+      // 2. 有参无返回值
+      function fun3(num,num2) {
+        // 将处理过程一致，但数据不一致的时候，并且函数处理结果外部不使用
+        // console.log(num);
+        // console.log(num2);//undefined
+        
+      }
+      fun3(2)
+      // fun3(3)
+      // fun3(4)
+       // console.log(num);//报错
+      
+      // 3.无参有返回值 
+      // 返回值：return 需要返回的内容
+      function count() {
+        // 将所有处理数据和过程都一致放在该函数内，并且函数处理结果外部要使用
+        var c =100+123
+        return c
+      }
+     var result =  count()
+      console.log(result);
+
+      // 4. 有参有返回值
+      function add(num1,num2) {
+        return num1+num2
+      }
+      console.log(add(2,5));
+      console.log(add(5, 9));
+
+
+      // 5. 匿名函数 function(){}
+      // 使用事件接收/变量名接收
+
+      // div.onclick=function(){}
+
+      var minu = function() {
+        console.log('匿名函数');
+      }
+      minu()
+
+      var boy={
+        name:'Tom',
+        say:function(){
+          console.log('说话');
+        }
+      }
+      boy.say();
+
+      // 6. 自运行函数（常用于插件封装）
+      (function(a){
+        console.log(a);
+        console.log('自运行函数');
+      })(6)
+
+      console.clear()
+
+
+
+      function show(){
+        for (var i = 0; i < 10; i++) {
+          if(i==5){
+            // break;   强制跳出当前循环（提前终止循环）
+            // return;   终止函数的执行
+            // continue;  跳过本次循环   
+          }
+          console.log(i);
+        }
+        console.log('函数执行');
+      }
+      show()
+
+
+     
+
+
+
+  
+
+
+      
+    </script>
+</body>
+</html>

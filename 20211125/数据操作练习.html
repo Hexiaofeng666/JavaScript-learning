@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button:nth-child(1) {
+            color: #0d94ff;
+            width: 100px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid #0d94ff;
+            border-radius: 5px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        #Button2 {
+            color: red;
+        }
+
+        thead {
+            background-color: #0d94ff;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <button>新增</button>
+        <div>
+            <table border="1" class="table_100 text_align_l" id="dynamicTable">
+                <thead>
+                    <tr>
+                        <th width="5%">ID</th>
+                        <th width="10%">类型</th>
+                        <th width="10%">姓名</th>
+                        <th width="15%">所属公司</th>
+                        <th width="10%">职称职务</th>
+                        <th width="20%">身份证号</th>
+                        <th width="20%">手机号</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="NO" size="2" value="1" /></td>
+                        <td>代表</td>
+                        <td><input type="text" placeholder="请输入姓名" class="expert_inp_w100"></td>
+                        <td><input type="text" placeholder="请输入所属公司" class="expert_inp_w100"></td>
+                        <td><input type="text" placeholder="请输入职称职务" class="expert_inp_w100"></td>
+                        <td><input type="text" placeholder="请输入身份证号" class="expert_inp_w100"></td>
+                        <td><input type="text" placeholder="请输入手机号" class="expert_inp_w100"></td>
+                        <td><a href="#" class="td_a_3" id="Button2">删除</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="NO" size="2" value="2" /></td>
+                        <td>姓名</td>
+                        <td><input type="text" placeholder="请输入姓名" class="expert_inp_w100"></td>
+                        <td><input type="text" placeholder="请输入所属公司" class="expert_inp_w100"></td>
+                        <td><input type="text" placeholder="请输入职称职务" class="expert_inp_w100"></td>
+                        <td><input type="text" placeholder="请输入身份证号" class="expert_inp_w100"></td>
+                        <td><input type="text" placeholder="请输入手机号" class="expert_inp_w100"></td>
+                        <td><a href="#" class="td_a_3" id="Button2">删除</a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+
+
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+        var el = $('tbody tr').eq(1)
+        console.log(el);
+        $('main>button').click(function () {
+            // $('tbody tr').last().clone().appendTo($('tbody'))
+            $('tbody').append($('tbody tr').last().clone())
+            // $('tbody').append($('tbody tr').eq(1).clone())
+            // console.log($('tbody tr').length)
+            // var val = $('tbody tr').length - 1
+            var val = $('tbody tr:nth-last-child(1) td:nth-of-type(1) input').attr('value')
+            $('tbody tr:nth-last-child(1) td:nth-of-type(1) input').attr('value', val - 0 + 1)
+
+            $('tbody').children().find('a').click(function () {
+                if ($('tbody').children().length > 1) {
+                    $(this).parents().eq(1).remove()
+                } else {
+                    alert('至少保留一行')
+                }
+            })
+        })
+        $('tbody').children().find('a').click(function () {
+            if ($('tbody').children().length > 1) {
+                $(this).parents().eq(1).remove()
+            } else {
+                alert('至少保留一行')
+            }
+        })
+    </script>
+</body>
+
+</html>

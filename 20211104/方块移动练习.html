@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 鼠标事件类型： click  sblclick  mouseover/mouseenter
+        //          mouseout/mouseleave  mousemove
+        var div = document.querySelector('div')
+        div.onmousedown =  function (e) {
+            // console.log(e)
+            // 获取点击时鼠标距离方块的位置
+            var x = event.offsetX
+            var y = event.offsetY
+            document.onmousemove = function (e) {
+                div.style.marginTop = e.clientY - y + 'px';
+                div.style.marginLeft = e.clientX - x + 'px';
+            }
+            document.onmouseup = function (e) {
+                // 移动事件清空
+                this.onmousemove = null;
+            }
+        }
+        // 变色
+        div.onmouseenter = function () {
+            div.style.backgroundColor = 'red'
+        }
+        div.onmouseleave = function () {
+            div.style.backgroundColor = 'green'
+        }
+    </script>
+</body>
+
+</html>

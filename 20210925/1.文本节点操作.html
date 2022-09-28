@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+    </ul>
+    <script>
+        var li = document.querySelectorAll("li");
+        // 进行纯文本的渲染
+        li[0].innerText = '<b>修改的新内容</b>';
+        // 当内容中含有标签的时候，会作为页面标签进行渲染
+        li[1].innerHTML = ' <b>第二个修改的新内容</b>';
+        // 直接将内容放在body中
+        // document.write("写的内容");
+
+        // 获取标签内容
+        // 获取标签的纯文本
+        console.log(li[1].innerText);
+        // 获取标签中所有的内容(包含子元素)
+        console.log(li[1].innerHTML);
+        // 获取整个标签(包含元素本身和内部的所有内容)
+        console.log(li[1].outerHTML);
+
+
+        // 往第三个标签加一个百度a标签
+        // li[2].innerHTML = '<a>百度</a>';
+        var newa = document.createElement('a')
+        newa.innerText = '百度'
+        li[2].appendChild(newa);
+
+        // 将第二个内容copy到第四个标签
+        li[3].innerHTML = li[1].innerHTML;
+
+
+        // 获取标签的所有子节点
+        // 节点  nodename 节点名称  nodetype节点类型  nodeValue节点值
+        //      1.标签节点    2.属性节点  3.文本节点
+        // console.log(li[1].childNodes[0].childNodes[0].nodeValue);
+
+        // console.log(li[1].parentElement.childNodes);
+
+
+        var textnode = li[1].childNodes[0]
+        console.log(textnode);
+        // 针对文本节点进行操作
+        // 1.增
+        textnode.appendData('新的内容');
+        //指定位置加入新的文本内容 insertData(插入位置的索引值，插入的新内容)
+        li[2].childNodes[0].insertData(1, '>_< ')
+
+        // 2.改   replaceData(要被修改的开始位置,修改的长度,修改的新内容)
+        li[0].childNodes[0].replaceData(1, 4, '$_$')
+        
+        // 3.删除  deleteData(开始位置的索引值,删除的长度)
+        li[3].children[0].childNodes[0].deleteData(0, 6)
+    </script>
+</body>
+
+</html>

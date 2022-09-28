@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 根据值的特点，将数据类型分为:number,string,bollen,null,undefined,object,array
+
+        // 根据数据的存储特点，数据又分为：基本类型和引用类型
+        // 基本类型：（即基本数据类型）存储在栈中
+        // 引用类型：存储在堆中
+
+        // 基本类型在对于值的操作上，是将值复制给其他变量使用，当复制的变量值改变，
+        // 不会影响到原来的数据
+        var a = 10
+        var b = a
+        b = 40
+        console.log(a,b);
+
+        // 引用类型是将存储地址复制一份给其他的变量进行操作，当对应的变量进行修改里面的数据的时候
+        // 会影响到原来的数据
+        var people={
+            name:'Amy',
+            age:18,
+            sex:'女生'
+        }
+
+        var boy=people
+        boy.name = 'Tom'
+        console.log(people);
+        console.log(boy);
+    </script>
+</body>
+</html>

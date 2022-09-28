@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li draggable="true">CSS</li>
+    <li draggable="true">HTML</li>
+    <li draggable="true">JAVA</li>
+    <li draggable="true">PHP</li>
+  </ul>
+  <script>
+    //  拖拽事件：即对元素进行拖动操作，普通文本内容是没有拖拽效果
+    // 所有要在标签上先设置draggable 属性，开启拖拽功能
+    var lis = document.querySelectorAll('li')
+    for (var i = 0; i < lis.length; i++) {
+      // 开始拖拽
+      // 进行对拖拽元素操作的时候，拖拽元素触发的事件
+      lis[i].ondragstart = function (e) {
+        // this 针对拖拽元素  
+        console.log(this);
+        this.id = 'dragging'
+        // 要对拖拽元素进行信息存储，方便之后获取该标签的信息进行操作(存id)
+        e.dataTransfer.setData('id', this.id)
+        // console.log(e.dataTransfer);
+      }
+      // 当拖拽元素进入拖放元素的时候，拖放元素触发的事件
+      lis[i].ondragover = function (e) {
+        // this指的是拖放元素
+        e.preventDefault()
+        // console.log(this);   
+        this.style.borderBottom = '1px solid red'
+      }
+
+      // 当拖拽元素离开拖放元素的时候，拖放元素触发的事件
+      lis[i].ondragleave = function (e) {
+        // console.log(this);
+        this.style.borderBottom = 'none'
+      }
+
+      // 释放拖拽元素的时候触发，但是这针对的是拖放元素
+      // 注意： 拖拽事件都会有自带的默认事件，drop事件要被触发的话，就必须将dragover的默认事件给阻止才可以触发
+      lis[i].ondrop = function (e) {
+        // 释放效果： 将拖拽元素插入到拖放元素的前面
+        console.log(this) //拖放元素
+        // 取出前面设置存储的id
+        var id = e.dataTransfer.getData('id')
+        console.log(id);
+        // // 拖拽元素
+        var el = document.getElementById(id)
+        console.log(el);
+        console.log(this);
+        el.id = ''
+        this.style.borderBottom = 'none'
+
+        if (el == this) return;
+        // // insertBefore
+        // this.parentElement.insertBefore(el,this)
+
+        console.log(el);
+        console.log(this);
+        // 请将拖拽元素拖放元素进行对调
+        var text = this.innerText
+        this.innerText = el.innerText
+        el.innerText = text
+
+        console.log(el);
+        console.log(this);
+
+      }
+
+
+    }
+  </script>
+</body>
+
+</html>

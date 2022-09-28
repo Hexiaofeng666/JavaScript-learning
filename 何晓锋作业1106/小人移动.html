@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./imgs/down-0.png" alt="">
+    <script>
+        var img = document.querySelector('img')
+        /**
+         * 上 38
+         * 下 40
+         * 左 37
+         * 右 39 
+         */
+        var i = 1
+
+        function move(dir) {
+            img.src = './imgs/' + dir + '-' + i + '.png'
+            console.log(typeof (img.style.left.substring(0, img.style.left.length - 2) - 0));
+            i++
+            if (i == 4) {
+                i = 1
+            }
+            document.onkeyup = function () {
+                img.src = './imgs/' + dir + '-' + 0 + '.png'
+            }
+            // console.log(e);
+        }
+        document.onkeydown = function (e) {
+            if (e.keyCode == 38) {
+                move('up')
+                img.style.top = img.style.top.substring(0, img.style.top.length - 2) - 0 - 10 + 'px'
+            } else if (e.keyCode == 40) {
+                move('down')
+                img.style.top = img.style.top.substring(0, img.style.top.length - 2) - 0 + 10 + 'px'
+            } else if (e.keyCode == 37) {
+                move('left')
+                img.style.left = img.style.left.substring(0, img.style.left.length - 2) - 0 - 10 + 'px'
+            } else if (e.keyCode == 39) {
+                move('right')
+                img.style.left = img.style.left.substring(0, img.style.left.length - 2) - 0 + 10 + 'px'
+            }
+        }
+    </script>
+</body>
+</html>

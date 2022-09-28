@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    body{
+      height: 100vh;
+      background-image: url(./images/bg.jpg);
+    }
+    ul{
+      list-style: none;
+      position: absolute;
+      right: 21%;
+      top: 16%;
+    }
+    ul li{
+      width: 80px;
+      height: 80px;
+    }
+    ul img{
+      width: 100%;
+      position: absolute;
+      transition: all 1s;
+    }
+    .active{
+      opacity: 0;
+    }
+    .on .active{
+      opacity: 1;
+    }
+    .on .link{
+      opacity: 0;
+    }
+
+    div img{
+      height: 90%;
+      position: absolute;
+      right: 34%;
+      max-height: 500px;
+      bottom: 0;
+      opacity: 0;
+      transform: translateX(20%);
+      transition: all 1s;
+    }
+    .show img{
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .name{
+      position: absolute;
+      display: block;
+      width: 196px;
+      height: 264px;
+      background-image: url(./images/sprite.png);
+      top: 5%;
+      left: 14%;
+      background-size: 274% 200%;
+      background-position-x: -165.8px;
+      transform: translateX(-60%);
+      transition: all 1s;
+
+    }
+    section:not(.show) .name{
+      opacity: 0;
+    }
+    .show .name{
+      transform: translateX(0%);
+    }
+  </style>
+</head>
+<body>
+  <!-- 选项 -->
+   <ul>
+    <li class="on">
+      <img src="./images/t1.png" alt="" class="link">
+      <img src="./images/t1_on.png" alt="" class="active">
+    </li>
+    <li><img src="./images/t2.png" alt="" class="link"><img src="./images/t2_on.png" alt="" class="active"></li>
+    <li><img src="./images/t3.png" alt="" class="link"><img src="./images/t3_on.png" alt="" class="active"></li>
+    <li><img src="./images/t4.png" alt="" class="link"><img src="./images/t4_on.png" alt="" class="active"></li>
+   </ul>
+   <!-- 内容 -->
+   <div>
+     <section class="show"><span class="name"></span><img src="./images/p1.png" alt=""></section>
+     <section><span class="name"></span><img src="./images/p2.png" alt=""></section>
+     <section><span class="name"></span><img src="./images/p3.png" alt=""></section>
+     <section><span class="name"></span><img src="./images/p4.png" alt=""></section>
+   </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script>
+    $('ul li').click(function(){
+      // 对选项进行变化
+      $(this).addClass('on').siblings().removeClass('on')
+      // 对内容图片进行变化
+      $('section').eq($(this).index()).addClass('show').siblings().removeClass('show')
+      
+    })
+  </script>
+</body>
+</html>

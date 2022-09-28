@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img{
+      width: 100px;
+      height: 100px;
+    }
+    main{
+      width: 300px;
+      height: 300px;
+      border: 1px solid black;
+      margin: auto;
+      font-size: 0;
+    }
+    div{
+      text-align: center;
+      margin-top: 20px;
+    }
+    div img{
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+   <main></main>
+   <div>
+     <span>当前步数：00</span>
+     <img src="./img/all.png" alt="">
+   </div>
+   <script>
+     var main = document.querySelector('main')
+    //  定义一个长度为9的数组，里面存放1~9的数字
+    var numarr=new Array(9).fill(1).map(function(item,index){
+      return index+1
+    }).sort(function () {
+      return Math.random()-0.5
+    })
+    
+    // 函数用于检测不会随机取出的内容是正序的数字
+    function  filterNum() {
+      var count = 0//每次对比只要内容和索引值一致就记录
+      for (var i = 0; i < numarr.length; i++) {
+        if (numarr[i] == (i + 1)) {
+          count++
+        }
+      }
+      if (count == 9) {
+        //  有九次对比一致，说明此时该数组是正序排列
+        numarr.sort(function () {
+          return Math.random() - 0.5
+        })
+        filterNum()
+      }
+    }
+    filterNum()
+
+    // 拼图的初始渲染
+    numarr.forEach(function(item){
+      var img = document.createElement('img')
+      img.src='img/'+item+'.png'
+      main.appendChild(img)
+    })
+
+    for (var i = 0; i < main.children.length; i++) {
+       main.children[i].ondragstart=function(e){
+         this.id='dragging'
+         e.dataTransfer.setData('id',this.id)
+       }
+        main.children[i].ondragover = function (e) {
+          e.preventDefault();
+         this.style.opacity=0.5
+        }
+        main.children[i].ondragleave = function (e) {
+          this.style.opacity = 1
+        }
+
+         main.children[i].ondrop=function(e){
+           var id=e.dataTransfer.getData('id')
+           var el = document.getElementById(id)
+
+           var src  = el.src
+           el.src=this.src
+           this.src=src
+
+          this.style.opacity = 1
+          el.id=''
+
+           isright()
+         }      
+    }
+   
+    function isright(){
+        // 只要释放图片，就要检测一次，图片的内容数字是否为正序排列
+        // 要先获取图片地址的内容，看下里面内容数字是否是正序排序
+        var count=0
+        for (var i = 0; i <9; i++) {
+          var num= main.children[i].src.slice(-5, -4)
+          if((i+1)==num){
+            count++
+          }
+          if(count==9) {
+            alert('拼图完成')
+            for (var j = 0; j < main.children.length; j++) {
+              main.children[j].draggable=false
+            }
+          }
+        }
+
+
+    }
+    
+
+   </script>
+</body>
+</html>

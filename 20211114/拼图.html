@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            margin-bottom: 100px;
+        }
+
+        img {
+            vertical-align: middle;
+            /* text-align: center; */
+            width: 100px;
+            height: 100px;
+        }
+
+        /* body>img {
+            width: 100px;
+            height: 100px;
+        } */
+    </style>
+</head>
+
+<body>
+    <main></main>
+    <span>当前步数为：00 规定步数为：20步 </span>
+    <img src="./img/all.png" alt="">
+    <script>
+        var main = document.querySelector('main')
+        var count = 0
+        var myspan = document.querySelector('span')
+        // 随机打乱1~9的数组
+        function randomsort(a, b) {
+            //用Math.random()函数生成0~1之间的随机数与0.5比较，返回-1或1
+            return Math.random() - 0.5;
+        }
+
+        var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var suiji = window.setInterval(() => {
+            arr.sort(randomsort);
+            // 遍历渲染图片
+            main.innerHTML = ''
+            for (let i = 0; i < arr.length; i++) {
+                var img = document.createElement('img')
+                img.src = './img/' + arr[i] + '.png'
+                img.draggable = true
+                main.appendChild(img)
+                // console.log(arr[i]);
+                img.ondragstart = function (e) {
+                    // console.log(111);
+                    // e.preventDefalult();
+                    this.id = 'dragging'
+                    // 要对拖拽元素进行信息存储，方便之后获取该标签的信息进行操作(存id)
+                    e.dataTransfer.setData('id', this.id)
+                }
+                img.ondragover = function (e) {
+                    // this指的是拖放元素
+                    e.preventDefault()
+                }
+                img.ondrop = function (e) {
+                    var id = e.dataTransfer.getData('id')
+                    var el = document.getElementById(id)
+                    el.id = ''
+                    if (el == this) return;
+                    var text = this.src
+                    // console.log(text);
+                    this.src = el.src
+                    el.src = text
+                    console.log(main);
+                    count++
+                    myspan.innerText = '当前步数为：' + count + ' 规定步数为：20步'
+                    mycheck()
+                    e.preventDefault()
+                }
+            }
+            clearInterval(suiji)//注释
+          mycheck()  
+        }, 10);
+
+
+
+
+        function mycheck() {
+            var mycount = 0
+            for (let i = 1; i < 10; i++) {
+                var mysrc = document.querySelectorAll("main > img")[i - 1].src
+                var num = parseInt(mysrc.substring(mysrc.length - 5, mysrc.length - 4))
+                if (num == i) {
+                    mycount++
+                }
+            }
+            console.log(mycount);
+            if (mycount == 9 && count <= 20) {
+                alert('成功了，当前使用了' + count + '步！')
+                clearInterval(suiji)
+                for (let j = 0; j < main.children.length; j++) {
+                    main.children[j].draggable = false
+                    
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

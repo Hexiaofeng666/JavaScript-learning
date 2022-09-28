@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <ul>
+      <li>
+        <p>内容1</p>
+        <input type="text" disabled>
+        <i>斜体标签</i>
+      </li>
+      <li>
+        <p>内容2</p>
+        <input type="text">
+      </li>
+      <li>
+        <p>内容3</p>
+        <input type="text">
+        <i></i>
+      </li>
+      <li>
+        <p>内容4</p>
+        <input type="text">
+      </li>
+      <li>
+        <p>内容5</p>
+      </li>
+    </ul>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <!-- 请使用内容筛选 选择到i的空标签,设置一个padding:10,背景色为：蓝色 -->
+    
+    <!-- 用属性选择器找到 第三个input，并且把边框色改为红色-->
+    <!-- 使用基本选择器，选择偶数个数的li，字颜色为：orange -->
+    <script>
+      $('i:empty')[0].style.padding='10px'
+        $('i:empty')[0].style.backgroundColor ='blue'
+
+        $(':text:eq(2)')[0].style.borderColor='red'
+
+        for (var i = 0; i < $('li:odd').length; i++) {
+          $('li:odd')[i].style.color='orange'
+          
+        }
+        
+    </script>
+</body>
+</html>

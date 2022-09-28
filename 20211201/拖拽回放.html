@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: black;
+    }
+    main{
+      color: white;
+      border: 1px solid white;
+      width: 300px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    main div:first-child{
+      border-bottom: 1px solid white;
+      text-align: right;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div>
+      <a href=''>点击回放拖拽路径</a>
+    </div>
+    <div>
+      <p>dragable:false</p>
+      <p>offsetTop:0</p>
+      <p>offsetLeft:0</p>
+    </div>
+  </main>
+  <script>
+    // 用于实时检测元素改变的位置
+    var main = document.querySelector('main')
+    function changeState() {
+       var l = main.offsetLeft
+       var t = main.offsetTop
+       main.children[1].children[1].innerText = 'offsetTop:' + t
+       main.children[1].children[2].innerText='offsetLeft:'+l
+    }
+    changeState()
+
+    // 定义一个数组用于存储移动的位置
+    var points=[]
+
+    main.children[0].onmousedown=function(e){
+      //获取鼠标按下时距离当前元素的间隔
+      var disx = e.offsetX
+      var disy = e.offsetY
+
+       main.children[1].children[0].innerText ='dragable:true'
+       main.onmousemove=function(e){
+          this.style.transform = 'none'
+          var l = e.clientX - disx
+          var t = e.clientY - disy
+
+          main.style.top = t+'px'
+          main.style.left = l + 'px'
+          changeState()
+
+          var obj = {left:l,top:t}
+          points.push(obj)
+       }
+    }
+    document.onmouseup=function(){
+      main.children[1].children[0].innerText = 'dragable:false'
+      main.onmousemove=null
+    }
+
+    document.querySelector('a').onclick=function(e){
+      e.preventDefault();
+      e.stopPropagation();//阻止冒泡
+
+      // 设置一个定时器，从存储路径的数组中取值，给main进行样式设置，并且还要进行删除
+      var move=setInterval(function(){
+        if(points.length==0){
+          clearInterval(move)
+        }else{
+          // 删除数组元素的同时能获取到删除的元素
+          var data = points.pop()
+          main.style.left=data.left+'px'
+          main.style.top = data.top +'px'
+          changeState()
+        }
+      },30);
+    }
+
+  </script>
+</body>
+</html>

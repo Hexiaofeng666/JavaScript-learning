@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="size"></div>
+    <script>
+        var div = document.querySelector("div");
+
+        // 对标签的style属性进行样式设置，设置成了行内样式
+        div.style.backgroundColor='orange';
+        div.style.border= '5px solid blue';
+
+        // 查看已经设置的样式
+        console.log(div.style.backgroundColor);//空值
+
+        // 对class属性的操作
+        // 添加class   使用setAttribute
+
+        // 会将原有的class名进行覆盖
+        // div.className='size one'
+
+        // 或者 （需要加空格）
+        // div.className+=' one'
+
+        // 往原有的class名中添加新的，不会将原来的覆盖
+        // div.classList.add("one");
+
+        // 移除
+        // div.classList.remove('size');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

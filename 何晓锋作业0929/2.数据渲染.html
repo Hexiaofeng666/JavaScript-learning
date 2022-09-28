@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./bookdata.js"></script>
+    <style>
+        main>div {
+            width: 100vw;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .mydiv {
+            width: 33%;
+            display: inline-block;
+
+            /* display: flex;
+            justify-content: space-between; */
+
+        }
+
+        .mydiv>img {
+            width: 40%;
+            height: 100%;
+            /* display: inline-block; */
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <button onclick="xiaoliang();">销量</button>
+        <button onclick="jiage();">价格</button>
+        </br>
+        <div></div>
+    </main>
+    <script>
+        console.log(bookArr);
+        var main = document.querySelector("main");
+        var div = document.querySelector("div");
+        function load() {
+            for (let index = 0; index < bookArr.length; index++) {
+            var newdiv = document.createElement("div");
+            var newimg = document.createElement("img");
+            var newtitle = document.createElement("h2");
+            var newp = document.createElement("p");
+            newimg.src = bookArr[index].img
+            newtitle.innerText = bookArr[index].title
+            newp.innerHTML = "作者: " + bookArr[index].author + "</br>" + "￥" + bookArr[index].newprice + "￥" + bookArr[index].oldPrice + '</br>' + "销量:" + bookArr[index].num
+            newdiv.classList.add("mydiv")
+            div.appendChild(newdiv);
+            newdiv.appendChild(newimg);
+            newdiv.appendChild(newtitle);
+            newdiv.appendChild(newp);
+        }
+        }
+        window.onload = load()
+        // 嵌套一层函数用来接收对象属性名
+        function compare(property) {
+            return function (a, b) {
+                var value1 = a[property];
+                var value2 = b[property];
+                return value2 - value1;
+            }
+        }
+        function xiaoliang() {
+            console.log(div);
+            // 清空
+            div.innerHTML = "";
+            bookArr.sort(compare('num'));
+            load();
+        };
+
+        function jiage() {
+            div.innerHTML = "";
+            bookArr.sort(compare('newprice'));
+            load();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: skyblue;
+            display: inline-block;
+            /* float: right; */
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/api">
+        用&nbsp;&nbsp;户&nbsp;&nbsp;名：<input type="text"><br>
+        密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password"><br>
+        确认密码：<input type="password"><br>
+        电子邮箱：<input type="text"><br>
+        <!-- <input type="button" value="普通按钮">
+        <input type="reset" value="重置按钮">
+        <input type="submit" value="提交按钮"> -->
+        <button>注册</button>
+        <!-- <button type="button">普通按钮</button>
+        <button type="reset">重置按钮</button> -->
+        <script>
+            var input = document.querySelectorAll('input')
+            // 用户名事件
+            var div = document.createElement('div')
+            var div1 = document.createElement('div')
+            var div2 = document.createElement('div')
+            input[0].onfocus = function () {
+                // console.log('我丢');
+                if (input[0].value.trim().length == 6) {
+                        // div.innerHTML=''
+                        console.log(input[0].value.trim());
+                        div.innerHTML = '<img src="./true.png" alt="">'
+                        this.onblur = null
+                    } 
+                    else {
+                        div.innerHTML = '<p>请输入6个字符的用户名，可由汉字<br>数字字母下划线组成(空格自动<br>忽略)</p>'
+                    }
+                input[0].oninput = function(){
+                    // div.innerHTML=''
+                    if (input[0].value.trim().length == 6) {
+                        // div.innerHTML=''
+                        console.log(input[0].value.trim());
+                        div.innerHTML = '<img src="./true.png" alt="">'
+                        this.onblur = null
+                    } 
+                    else {
+                        div.innerHTML = '<p>请输入6个字符的用户名，可由汉字<br>数字字母下划线组成(空格自动<br>忽略)</p>'
+                    }
+                }
+                // load()
+                input[0].parentNode.insertBefore(div, input[0].nextElementSibling);
+                input[0].onblur = function () {
+                    input[0].parentElement.removeChild(div)
+                }
+                // div.innerHTML=''
+            }
+            input[1].onfocus = function () {
+                console.log(div1.innerHTML);
+                if (input[1].value.trim().length >=6&&input[1].value.trim().length<=18) {
+                        // div.innerHTML=''
+                        console.log(input[0].value.trim());
+                        div1.innerHTML = '<img src="./true.png" alt="">'
+                        this.onblur = null
+                    } 
+                    else {
+                        div1.innerHTML = '<p>请输入6个字符的用户名，可由汉字<br>数字字母下划线组成(空格自动<br>忽略)</p>'
+                    }
+                input[1].oninput = function(){
+                    // div.innerHTML=''
+                    if (input[1].value.trim().length >=6&&input[1].value.trim().length<=18) {
+                        // div.innerHTML=''
+                        console.log(input[1].value.trim());
+                        div1.innerHTML = '<img src="./true.png" alt="">'
+                        this.onblur = null
+                    } 
+                    else {
+                        div1.innerHTML = '<p>请输入6个字符的用户名，可由汉字<br>数字字母下划线组成(空格自动<br>忽略)</p>'
+                    }
+                }
+                // load()
+                input[1].parentNode.insertBefore(div1, input[1].nextElementSibling);
+                input[1].onblur = function () {
+                    input[0].parentElement.removeChild(div1)
+                }
+                // div.innerHTML=''
+            }
+
+
+            input[2].onfocus = function () {
+                // console.log('我丢');
+                if (input[2].value==input[1].value) {
+                        // div.innerHTML=''
+                        console.log(input[2].value.trim());
+                        div2.innerHTML = '<img src="./true.png" alt="">'
+                        this.onblur = null
+                    } 
+                    else {
+                        div2.innerHTML = '<p>请输入6个字符的用户名，可由汉字<br>数字字母下划线组成(空格自动<br>忽略)</p>'
+                    }
+                input[2].oninput = function(){
+                    // div.innerHTML=''
+                    if (input[2].value==input[1].value) {
+                        // div.innerHTML=''
+                        console.log(input[2].value.trim());
+                        div2.innerHTML = '<img src="./true.png" alt="">'
+                        this.onblur = null
+                    } 
+                    else {
+                        div2.innerHTML = '<p>请输入6个字符的用户名，可由汉字<br>数字字母下划线组成(空格自动<br>忽略)</p>'
+                    }
+                }
+                // load()
+                input[2].parentNode.insertBefore(div2, input[2].nextElementSibling);
+                input[2].onblur = function () {
+                    input[2].parentElement.removeChild(div2)
+                }
+                // div.innerHTML=''
+            }
+        </script>
+    </form>
+</body>
+
+</html>

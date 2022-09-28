@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body>button{
+      border:none;
+      background: none;
+      border: 1px solid #0d94ff;
+      border-radius: 10px;
+      padding: 5px;
+      width: 100px;
+      line-height: 40px;
+      font-size: 20px;
+      color: #0d94ff;
+    }
+    table{
+      width: 100%;
+      margin-top: 20px;
+      border-spacing: 1px;
+    }
+    th{
+      background-color: #0d94ff;
+      color: white;
+      line-height: 50px;
+    }
+    td:nth-child(3),td:nth-child(5){
+      width: 120px;
+    }
+    td:nth-child(4){
+      width: 185px;
+    }
+      td:nth-child(6),td:nth-child(7){
+      width: 230px;
+    }
+    td:nth-child(3) input,td:nth-child(5) input{
+      width: 93%;
+    }
+    td{
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    input{
+      line-height: 40px;
+      outline: none;
+      border-radius: 10px;
+      border: none;
+      border: 1px solid gainsboro;
+    }
+    input:focus{
+      border-color: #0d94ff;
+    }
+  
+  </style>
+
+</head>
+<body>
+   <button>新增</button>
+   <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>类型</th>
+          <th>姓名</th>
+          <th>所属公司</th>
+          <th>职务职称</th>
+          <th>身份证号</th>
+          <th>手机号</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+     <tbody>
+        <tr>
+          <td>1</td>
+          <td>代表</td>
+          <td><input type="text" placeholder="请输入姓名"></td>
+          <td><input type="text" placeholder="请输入所属公司"></td>
+          <td><input type="text" placeholder="请输入职务职称"></td>
+          <td><input type="text" placeholder="请输入身份证号"></td>
+          <td><input type="text" placeholder="请输入手机号"></td>
+          <td><button>删除</button></td>
+        </tr>
+     </tbody>
+   </table>
+   <!-- <script>
+      var table = document.querySelector('table')
+      console.log(table.children);
+   </script> -->
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script>
+    // 初始化添加
+    // var str='<tr><td>1</td><td>姓名</td>'
+    // for (var i = 2; i < 7; i++) {
+    //    str+='<td><input type="text" placeholder="请输入'+$('th').eq(i).text()+'"/></td>'
+    // }
+    // str+='<td><button>删除</button></td></tr>'
+    // $('tbody').append(str)
+    
+    // 新增
+    $('body>button').click(function(){
+        // 获取表格内容中的某一行，进行clone
+        var index = $('tbody tr').last().children().eq(0).text()*1 
+        // console.log($('tbody').children().eq(0).text());
+        $('tbody tr').last().clone().appendTo($('tbody')).children().eq(1).text('姓名').prev().text(index+1)
+
+    })
+
+    // $('tbody').children().find('button').click(function(){
+    //  if ($('tbody').children().length > 1) {
+    //     $(this).parents().eq(1).remove()
+    //   } else {
+    //     alert('至少保留一行')
+    //   }
+    // })
+  
+    // jq的事件委托，是为了对后期动态添加的标签进行事件绑定
+    $('tbody').on('click','button',function(){
+      if ($('tbody').children().length > 1) {
+        $(this).parents().eq(1).remove()
+      } else {
+        alert('至少保留一行')
+      }
+    })
+
+
+  </script>
+</body>
+</html>

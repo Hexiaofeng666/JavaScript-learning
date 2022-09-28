@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            width: 150px;
+            height: 300px;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+        main>* {
+            margin-top: 8px;
+        }
+        main span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main></main>
+    <script>
+        // 渲染数据
+        var main = document.querySelector('main')
+        var str =
+            '<input type="checkbox" onclick="changeall()">全选&nbsp;<span onclick="inverse()">反选</span><br><hr>'
+        for (let i = 1; i <= 10; i++) {
+            str += '<input type="checkbox">选项(' + i + ')<br>'
+        }
+        main.innerHTML = str
+        var inp = document.querySelectorAll('input')
+        // 全选(全不选)
+        var sign = 0
+        // 判断是全选还是全不选状态
+        function check() {
+            var tag = 0
+            for (let i = 1; i <= 10; i++) {
+                if (inp[i].checked == true) {
+                    tag++
+                }
+            }
+            if (tag == 0) {
+                sign = 0
+                inp[0].checked = false
+            } else if (tag == 10) {
+                sign = 1
+                inp[0].checked = true
+            } else {
+                sign = 2
+                inp[0].checked = false
+            }
+        }
+        check()
+        // 全选/全不选事件
+        function changeall() {
+            if (sign == 1) {
+                // inp[0]=true
+                for (let i = 1; i <= 10; i++) {
+                    inp[i].checked = false
+                }
+                check()
+            } else {
+                // inp[0]=false
+                for (let i = 1; i <= 10; i++) {
+                    inp[i].checked = true
+                }
+                check()
+            }
+        }
+        // 反选
+        function inverse() {
+            for (let i = 1; i <= 10; i++) {
+                inp[i].checked = !inp[i].checked
+            }
+            check()
+        }
+        // 1~10每个按钮设置函数
+        for (let i = 1; i <= 10; i++) {
+            inp[i].onclick = function () {
+                check()
+            }
+        }
+    </script>
+</body>
+
+</html>

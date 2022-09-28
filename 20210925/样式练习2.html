@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .newcss{
+           /* position: relative; */
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // 随机数
+        // var r = Math.random() * 50 +50;
+        // console.log(Math.round(r));
+        // var math = Math.floor(Math.random() * 10);
+        // console.log(math);
+        var body = document.querySelector("body");
+        
+        
+        var r = 0;
+        for (let i = 0; i < 15; i++) {
+            let circle = document.createElement('div');
+            circle.style.borderRadius="50%"
+            // const element = array[i];
+            w=Math.round(Math.random() * 100);
+            var r=Math.floor(Math.random()*256);
+            var g=Math.floor(Math.random()*256);
+            var b=Math.floor(Math.random()*256);
+            var t=Math.floor(Math.random());
+            var l=Math.floor(Math.random());
+            circle.classList.add("newcss");
+            circle.style.display = "inline-block";
+            circle.style.width = w+'px';
+            circle.style.height = w+'px';
+            circle.style.backgroundColor = "rgb("+r+","+g+","+b+")" ;
+            circle.style.marginTop = t+'vw';
+            circle.style.marginLeft = l+'vh';
+            body.appendChild(circle)
+        }
+    </script>
+</body>
+
+</html>

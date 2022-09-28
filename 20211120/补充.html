@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+   <div>01</div>
+   <div>02</div>
+   <div>03</div>
+   <div>04</div>
+   <div>05</div>
+   <script>
+     $('div').click(function(){
+      //  console.log('点击');
+      // 获取点击标签的索引值
+      console.log($(this).index());
+     })
+   </script>
+</body>
+</html>

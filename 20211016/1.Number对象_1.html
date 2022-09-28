@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Number
+    var text = '10' 
+    // 1. 转型
+    //   1.1 使用Number对象
+    console.log(typeof Number(text));
+
+    // 1.2 运算符
+    console.log(text);
+    console.log(text*1);
+    console.log(text - 0);
+    console.log(text / 1);
+    console.log(+text);
+
+    console.log(Number('10'+10));// 1010
+    console.log(Number(10 + 10));// 20
+    console.log(Number('10 + 10'));// NaN
+
+    // 数字转型，转型成功是一个数字，但转型不成功的时候，输出的是NaN
+    console.log(Number('3a'));//NaN
+
+    console.log(Number(true));// 1
+    console.log(Number('false'));//NaN
+    console.log(Number(''));//0
+
+
+    // 判断转型是否成功（判断是否是一个数字）isNaN()
+    // isNaN 判断是否是NaN的内容
+    // 是NaN 转型失败  反之是成功
+    console.log(isNaN(10));//false (转型成功，是一个数字)
+    console.log(isNaN('a'));//true（转型失败，不是一个数字）
+    console.log(isNaN('10'));//false  
+     
+    console.clear()
+
+    // 判断是否是一个整数
+    console.log(Number.parseInt(2.8));//2 (取整数部位的内容)
+    console.log(Number.isInteger(2.8));//false
+    console.log(Number.isInteger(2));//true
+    console.log(Number.isInteger(2.000000001));//false
+    console.log(Number.isInteger(2.000000000));//true
+
+    // 保留几位小数
+    // num.tofixed(n)  对num数字进行n位的小数位保留（数字类型会转为字符串类型）
+    console.log(2.346278.toFixed(1));//2.3
+
+    console.log(2.346278.toFixed(2));//2.35
+
+
+
+
+    
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <ul>
+     <li>Html5</li>
+     <li id='two'>PHP</li>
+     <li>CSS</li>
+     <li>
+       JAVA
+       <span>内部的子元素</span>
+     
+     </li>
+   </ul>
+   <script>
+     var li =document.getElementById('two')
+    //  查找：
+    // 1.查看指定定某个元素
+    // 通过id/querySelector 获取指定的标签
+
+    // 2. 获取标签的父元素
+    console.log(li.parentElement);
+
+    // 3.获取相邻的兄弟标签
+    // 获取下一个相邻的兄弟标签
+    console.log(li.nextElementSibling);
+    // 获取上一个相邻的兄弟标签
+    console.log(li.previousElementSibling);
+
+    // 4.获取到父元素元素有多个“第一级子元素”
+    var parent = li.parentElement
+    console.log(parent.children);
+
+
+    // 增：
+    // 创建一个新的标签
+    var newli = document.createElement('li') //<li><li>
+    //往新标签中添加新的内容 
+    newli.innerText='新增加的li标签'
+    // 要将新的标签放到页面上的标签中（往父类的后后面添加新的子元素）
+    // parent.appendChild(newli)
+    
+    // 指定为位置插入新子元素
+    // insertBefore(新子元素,要插入位置的子元素)
+    parent.insertBefore(newli,parent.children[0])
+   
+
+    // 练习：请在span中添加一个新的b标签，b标签的内容为：新增的加粗标签
+    var newb = document.createElement('b')
+    newb.innerText='新增的加粗标签'
+    // li.nextElementSibling.nextElementSibling.children[0].appendChild(newb)
+     parent.children[3].children[0].appendChild(newb)
+
+
+    //  删除
+    // 让删除元素自己进行移除
+    // li.nextElementSibling.remove()
+
+    // 通过父元素进行删除
+    // parent.removeChild(li.nextElementSibling)
+
+
+    // 改   replaceChild(新的子元素,要被替换的子元素)
+    // var section=document.createElement('section')
+    // section.innerText='新的section标签'
+    // parent.replaceChild(section,parent.children[3])
+
+   </script>
+</body>
+</html>

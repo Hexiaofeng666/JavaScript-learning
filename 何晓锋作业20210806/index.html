@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+        /* 背景图片 */
+        .back {
+            width: 100%;
+            position: fixed;
+            z-index: -10;
+            height: 100vh;
+            /* size: 100vh; */
+            filter: blur(10px);
+        }
+
+        span {
+            color: white;
+        }
+
+        .title {
+            max-width: 300px;
+            margin: auto;
+            /* margin-top: 10vh; */
+            padding-top: 10vh;
+            display: flex;
+            justify-content: space-between;
+        }
+        .title>span{
+            cursor: pointer;
+        }
+        .imgtwo{
+            display: inline-block;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            margin: 10vh calc(50% - 40px);
+            margin-top: 15vh;
+        }
+        .myinput {
+            /* 取消点击时的边框 */
+            outline:none;
+            border-color: white;
+            border-style: solid;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 1px;
+            border-left-width: 0px;
+            background-color: transparent;
+            /* size: 10vw; */
+            max-width: 40vw;
+        }
+
+        input::-webkit-input-safebox-button {
+            display: none;
+        }
+        .inputs{
+            /* display: inline-block; */
+            max-width: 250px;
+            margin: auto;
+            margin-bottom: 5vh;
+        }
+        /* 按钮 */
+        body>button{
+            margin: 0 calc(50% - 25px);
+            width: 50px;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: green;
+            color: white;
+            cursor: pointer;
+        }
+        body>p{
+            /* margin: auto; */
+            text-align: center;
+            color: white;
+            cursor: pointer;
+        }
+        /* 图标 */
+        .imgs{
+            display: flex;
+            justify-content: space-between;
+            max-width: 250px;
+            margin: auto;
+        }
+        .imgs>img{
+            width: 20%;
+            height: 20%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./作业需求/1.jpg" alt="" class="back">
+    <div class="title">
+        <span>返回</span>
+        <span>登录</span>
+        <span>注册</span>
+    </div>
+    <img src="./作业需求/img.jpg" alt="" class="imgtwo">
+    <div class="inputs">
+        <span>账号：</span>
+        <input type="text" name="name" class="myinput">
+    </div>
+    <div class="inputs">
+        <span>密码：</span>
+        <input type="password" name="name" class="myinput">
+    </div>
+    <button>登录</button>
+    <p>忘记密码</p>
+    <div class="imgs">
+        <img src="./作业需求/qq.png" alt="">
+        <img src="./作业需求/weibo.png" alt="">
+        <img src="./作业需求/weixin.png" alt="">
+    </div>
+</body>
+</html>

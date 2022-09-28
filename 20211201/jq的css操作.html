@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 2px;
+    }
+    div{
+      width: 200px;
+      height: 200px;
+      margin:  50px;
+      padding: 50px;
+    }
+  </style>
+</head>
+<body>
+  <!-- <div style="width:200px"></div> -->
+  <div></div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script>
+    // var div = document.querySelector('div')
+    // console.log(div.style.width);
+
+    // 通过css方法设置一个样式
+    // $('div').css('background-color','red')
+    
+    // 通过css方法设置多个样式
+    $('div').css({
+      'background-color':'blue',
+      // 'border':'10px solid black'
+    })
+    
+    // width/height 获取元素的内容宽高
+    console.log($('div').width());
+
+    // 还可以使用它进行元素大小的改变
+    $('div').width(400).height(500)
+   
+    // 获取元素的内部显示空间的大小（width+padding）
+    console.log($('div').innerWidth());
+   
+    // 获取整个元素的大小  （width+padding+border）
+    console.log($('div').outerWidth());
+
+    
+    // 获取元素距离窗口左上角的两个偏移量的位置。返回一个对象
+    console.log($('div').offset());
+
+    // 获取匹配元素的相对父元素,相对父元素的偏移。（获取父元素的偏移量）
+    console.log($('div').position());
+
+
+    // scrollTop()：获取匹配元素相对滚动条顶部的偏移。
+    // scrollLeft()：获取匹配元素相对滚动条最左边的偏移。
+    
+
+
+    
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    这是第二个页面：2
+    <button>返回</button>
+    <button>进入页面三</button>
+    <script>
+       document.querySelectorAll('button')[0].onclick = function () {
+        //  返回到上一条历史记录
+         history.back()
+        }
+      document.querySelectorAll('button')[1].onclick = function () {
+        location.href = './three.html'
+      }
+    </script>
+</body>
+</html>

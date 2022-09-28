@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Number
+        var text = '10'
+        // 1.转型
+        // 1.1使用Number对象
+        // console.log(typeof Number(text));
+
+        // 1.2运算符
+        // console.log(text);
+        console.log(text*1);
+        console.log(text - 0);
+        console.log(text / 1);
+        console.log(+text);
+
+        console.log(Number('10' + 10));//1010
+        console.log(Number(10 + 10));//20
+        console.log(Number('10 + 10'));//NaN
+
+        // 数字转型，转型成功是一个数字，但转型不成功时，输出NaN
+        console.log(Number('3a'));  //NaN
+        console.log(Number('333')); //333
+        console.log(Number(true)); //1
+        console.log(Number(false)); //0
+        console.log(Number('false'));  //NaN
+
+
+        // 判断转型是否成功(判断是否一个数字)   isNaN()
+        // isNaN 判断是否是NaN的内容
+        // 是NaN 转型失败
+        console.log(isNaN(10));  //false (转型成功，是一个数字)
+        console.log(isNaN('a')); //true (转型失败，不是一个数字)
+        console.log(isNaN('10'));  //false  (附带转型)
+        console.log(typeof('10')); //String
+    </script>
+</body>
+</html>

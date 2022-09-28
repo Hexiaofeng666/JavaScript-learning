@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      height: 1000px;
+    }
+  </style>
+  <script>
+    console.log(111);
+    //  1.load事件（确保页面的内容都渲染后才触发）
+    // 目前为止：只有window和img能触发该事件
+    window.onload = function () {
+        console.log('页面资源加载后触发');
+      }
+    
+    // 2.unload 页面关闭触发
+    // window.onunload=function(){
+    //   console.log('页面不加载');
+    // }
+    
+    // 3. 实时监听事件
+    // 3.1    resize 对窗口(内窗口)大小的变化进行实时监测
+    // window.onresize=function(){
+    //   console.log(window.innerWidth);
+    // }
+    // 3.2.    scroll 对窗口滚动条进行实时监测
+    window.onscroll=function(){
+      console.log(document.documentElement.scrollTop);
+    }
+
+  </script>
+</head>
+<body>
+   <p>页面内容</p>
+   <img src="./回收站.png" alt="">
+   <script>
+     alert('弹框')
+   </script>
+  
+   <footer>页尾</footer> 
+   <!-- <script>
+     document.querySelector('img').onload = function () {
+        console.log('页面资源加载后触发');
+      }
+   </script> -->
+
+  
+</body>
+</html>

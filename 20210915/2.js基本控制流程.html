@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.判断
+        // if判断语句
+        /*
+            if(条件){
+                条件成功
+            }else{
+                条件不成功
+            }
+
+
+        */
+
+    //    var a=10;
+    //    if(a>10){
+    //        alert('真');
+    //    }
+    //    else if(a>5){
+
+    //    }
+    //    else if(){
+
+    //    }
+    //    else{
+
+    //    }
+
+    // var num = -8;
+    // if(num){
+    //     alert('真');
+    //     // console.log('真');
+    // }
+    // else{
+    //     alert('假');
+    // }
+    // 除了0都是真
+
+
+
+    // 针对判断的简单处理
+    // 1.三目运算符  条件? 条件成功:条件不成功
+    // num?alert('真'):alert('假')
+    // 2.只考虑一种情况
+    // if (num) {      }
+    
+
+    // 循环 (需要重复做的事情)
+    // for (let i = 0; i < 5; i++) {
+    //     // 循环体(每次循环要做的)
+    //     // console.log(i);
+    // }
+
+    // 请将0~100包含100之间的偶数输出
+    // for (let i = 0; i <= 100; i+=2) {
+    //     console.log(i);
+    // }
+    // 或者
+    // for (let i = 0; i <= 100; i++) {
+    //     if (i%2==0) {
+    //         console.log(i);
+    //     }
+    // }
+
+
+    // while循环
+    var a = 0
+    // while (a<5) {
+    //     a++;
+    //     console.log(a);
+    // }
+    
+
+    do {
+        console.log(a);
+    } while (a>5);
+    // do..while  循环一定会比while至少多执行一次
+
+    // 匹配
+    // switch case
+    // key: 变量/值/表达式
+    // case 情况,对比case的value是否和key一致，一致则执行对应的代码
+
+    // 匹配不仅要值一致，并且还要数据类型一致
+    var week = '3';
+    switch (week) {
+        case 1:
+            console.log('周一');
+            break;
+    
+        default:
+            console.log('非周一');
+            break;
+    }
+    // 注意:每个case的结束位置都要有break;进行代码的终止
+    //      保证只执行匹配到的case代码块的内容，而不会继续往下执行
+
+    // 使用变量接收用户输入的内容
+    var year = prompt('请输入你的初始年份');
+    console.log(year);
+
+    // js上的任何操作和body页面没有任何的关系，不能直接反应到页面上
+    // 将内容打印到页面上
+    document.write(year)
+
+
+
+
+
+
+    </script>
+</body>
+</html>

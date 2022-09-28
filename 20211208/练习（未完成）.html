@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body>div{
+            width: 180px;
+            border: 1px solid black;
+            margin: auto;
+        }
+        p{
+            text-align: center;
+            margin: 0;
+            background-color: rgb(204, 204, 204);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p style="color: black;">专辑推荐</p>
+        <img src="./img/1_1.jpg" alt="">
+        <p style="background-color: red;">COCOCO/可可尼</p>
+        <img src="./img/2_1.jpg" alt="">
+        <p style="background-color: green;">2013春印象</p>
+        <img src="./img/3_1.jpg" alt="">
+        <p style="background-color: orange;">南梦</p>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+        for (let i = 0; i < $('img').length; i++) {
+            var im = 1
+             $('img').eq(i).hover(function(){
+                $('img').eq(i).slideToggle(200,function(){
+                    im = 1?2:1
+                    $('img').eq(i).attr('src','./img/'+ (i+1) +'_'+ im +'.jpg')
+                })
+             })
+        }
+        for (let i = 0; i < $('p').length-1; i++) {
+             $('p').eq(i+1).hover(function(){
+                $('p').eq(i+1).slideToggle(200,function(){
+                    $('p').eq(i+1).text('这是第'+(i+1)+'个内容')
+                })
+             })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        main {
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        main>div {
+            border: 1px solid black;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 250px;
+
+        }
+
+        div>section {
+            /* border-radius: 10px; */
+            background-color: rgb(245, 247, 250);
+            text-align: left;
+            padding: 10px;
+        }
+
+        ul {
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        li {
+            list-style: none;
+            margin: 10px 0;
+            width: 100%;
+            /* margin: auto; */
+            /* cursor: pointer; */
+        }
+
+        /* 跳转按钮 */
+        .changebtn>div {
+            width: 52px;
+            text-align: center;
+            font-size: 39px;
+            font-weight: 100;
+            border: 1px solid rgb(229, 232, 237);
+            border-radius: 100%;
+            color: rgb(229, 232, 237);
+            background-color: rgb(245, 247, 250);
+            margin: 30px 0;
+            cursor: pointer;
+        }
+
+        input {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- 左侧 -->
+        <div class="left area">
+            <section><input type="checkbox"><span>列表一</span></section>
+            <ul>
+                <li><input type="checkbox" name="" id=""><span>备选项1</span></input></li>
+                <li><input type="checkbox" name="" id=""><span>备选项2</span></input></li>
+                <li><input type="checkbox" name="" id=""><span>备选项3</span></input></li>
+                <li><input type="checkbox" name="" id=""><span>备选项4</span></input></li>
+                <li><input type="checkbox" name="" id=""><span>备选项5</span></input></li>
+            </ul>
+        </div>
+        <!-- 跳转按钮 -->
+        <section class="changebtn">
+            <div>
+                &gt;
+            </div>
+            <div>
+                &lt;
+            </div>
+        </section>
+        <div class="right area">
+            <section><input type="checkbox"><span>列表二</span></section>
+            <ul>
+                <li><input type="checkbox" name="" id=""><span>备选项6</span></input></li>
+                <li><input type="checkbox" name="" id=""><span>备选项7</span></input></li>
+                <li><input type="checkbox" name="" id=""><span>备选项8</span></input></li>
+                <li><input type="checkbox" name="" id=""><span>备选项9</span></input></li>
+                <li><input type="checkbox" name="" id=""><span>备选项10</span></input></li>
+            </ul>
+
+        </div>
+    </main>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+
+    <script>
+        $("*").prop("onclick", null);
+        for (let i = 1; i < $('.area').length + 1; i++) {
+            function check() {
+                // 判断全选，绑定事件
+                $(".area:nth-of-type(" + i + ") section input").prop("checked", ($(".area:nth-of-type(" + i +
+                        ") li :checked").length == $(".area:nth-of-type(" + i + ") li").length && $(
+                        ".area:nth-of-type(" + i +
+                        ") li :checked").length != 0) ? true :
+                    false)
+                // console.log($(".area:nth-of-type(" + i + ") li ").length);
+                // console.log( $(".area:nth-of-type(" + i + ") li input"));
+                console.log(i);
+                // 判断按钮颜色
+                $('.changebtn div:nth-of-type(' + (i == 1 ? 1 : 2) + ')').css("backgroundColor", $(
+                    ".area:nth-of-type(" + (i == 1 ? 1 : 2) +
+                    ") li :checked").length > 0 ? "skyblue" : "rgb(245, 247, 250)");
+                $('.changebtn div:nth-of-type(' + (i == 1 ? 2 : 1) + ')').css("backgroundColor", $(
+                    ".area:nth-of-type(" + (i == 1 ? 2 : 1) +
+                    ") li :checked").length > 0 ? "skyblue" : "rgb(245, 247, 250)");
+            }
+            // 全选按钮绑定
+            $(".area:nth-of-type(" + i + ") section input").on("click", function () {
+                $(".area:nth-of-type(" + i + ") li input").prop("checked", $(".area:nth-of-type(" + i +
+                        ") li :checked").length == $(".area:nth-of-type(" + i + ") li").length ? false :
+                    true)
+                console.log($(".area:nth-of-type(" + i + ") li input"));
+                check()
+            });
+            // 子选项绑定
+  
+                $(".area:nth-of-type(" + i + ") li input").unbind("click");
+                $(".area:nth-of-type(" + i + ") li input").on("click", function () {
+                    // console.log(i);
+                    check()
+                });
+            // 穿梭按钮绑定事件
+            $(".changebtn div:nth-of-type(" + i + ")").on("click", function () {
+                var myjq = $(".area:nth-of-type(" + (i == 1 ? 1 : 2) + ") li :checked").parent()
+                myjq.find('input').prop("checked", false)
+                $('.area:nth-of-type(' + (i == 1 ? 2 : 1) + ') ul').append(myjq)
+                // myjq.appendTo($('.area:nth-of-type(' + (i == 1 ? 2 : 1) + ') ul')).find(myjq).on("click",function () {
+                //     check()
+                // })
+                // console.log(myjq.appendTo($('.area:nth-of-type(' + (i == 1 ? 2 : 1) + ') ul')).find(myjq).click(check()));
+                // console.log($(this).index());
+                // $(".changebtn div:nth-of-type(" + (i == 1 ? 1 : 2) + ")").css("backgroundColor",
+                //     "rgb(245, 247, 250)")
+                // console.log(i);
+                // i = i==1?2:1
+                // console.log(i);
+                check()
+
+            })
+            // check()
+            // console.log($(".changebtn div:nth-of-type(" + i + ")"));
+        }
+    </script>
+</body>
+
+</html>

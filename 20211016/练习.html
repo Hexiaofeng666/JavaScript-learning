@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body{
+      margin: 0;
+      height: 100%;
+    }
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    main{
+      position: relative;
+      padding: 0 30px;
+      background-color: white;
+      box-shadow: 0 10px 40px rgb(159 162 177/80%);
+      border-radius: 40px;
+      overflow: hidden;
+    }
+    ul{
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     display: flex;
+    }
+    li{
+      padding: 8px 13px;
+      color: #83818c;
+      line-height: 40px;
+      cursor: pointer;
+      position: relative;
+    }
+    li:not(:last-child){
+      margin-right: 20px;
+    }
+    li::before,.slide{
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      background-color: #e1e1e4;
+      bottom: -5px;
+      left: 0;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      transition: all .3s;
+    }
+    li:hover::before{
+      bottom: 0;
+    }
+    li:hover{
+      color: black;
+    }
+    .slide{
+      background-color: orange;
+      bottom: 0;
+      width: 58px;
+      left: 30px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <ul>
+      <li style='color:orange'>首页</li>
+      <li>关于我们</li>
+      <li>公司简介</li>
+      <li>产品中心</li>
+      <li>联系我们</li>
+    </ul>
+    <div class="slide"></div>
+  </main>
+  <script>
+    var lis = document.querySelectorAll('li')
+    var slide = document.querySelector('.slide')
+    var move = ['30px','109px','218px','327px','436px']
+     
+    // 记录上一次的激活标签
+    var prev = lis[0]
+    for (var i = 0; i < lis.length; i++) {
+      // 事先将i索引值存在对应的每个li中
+      lis[i].index=i
+      lis[i].onclick=function(){
+         prev.removeAttribute('style')
+         var r_color = Math.floor(Math.random()*361)
+         console.log(this);
+         this.style.color='hsl('+r_color+',50%,60%)'    
+         prev=this
+         
+        // 不直接使用i，因为var不会阻止循环
+        slide.style.left=move[this.index]
+        if(this.index>0){
+          slide.style.width='90px'
+        }else{
+          slide.style.width = '58px'
+        }
+         slide.style.backgroundColor = 'hsl(' + r_color + ',50%,60%)' 
+      }
+      
+    }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+    // 获取屏幕的大小
+    var w = document.documentElement.clientWidth
+    var h =document.documentElement.clientHeight
+   
+    // 在div中按下鼠标，进行移动，从而改变div的位置
+    var div = document.querySelector('div')
+    div.onmousedown=function(e){
+      // 获取到鼠标距离元素的间距
+      var disx = e.offsetX
+      var disy = e.offsetY
+      // 给整个文档进行事件绑定
+      document.onmousemove=function(e){
+        var x = e.clientX - disx
+        var y = e.clientY - disy
+
+        // 边界判断（为了确保div的移动范围不会移出可视区域的窗口）
+        // 左边
+        x = x<0?0:x
+        // 上边
+        y = y<0?0:y
+        // 右边
+        x = x>(w - 200)?(w-200):x
+        // 下边
+        y = y>(h - 200)?(h-200):y
+        div.style.left= x +'px'
+        div.style.top = y +'px'
+      }
+    }
+    document.onmouseup=function(){
+      // 鼠标抬起，停止移动即，取消移动事件
+      document.onmousemove=null
+    }
+  </script>
+</body>
+</html>

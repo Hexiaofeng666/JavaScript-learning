@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    main{width: 40%;}
+    p{
+      border-bottom: 1px solid black;
+    }
+    p span{
+      float: right;
+      margin-right: 40px;
+      color: white;
+      background-color: red;
+      border-radius: 50%;
+      padding: 0 5px;
+    }
+  </style>
+</head>
+<body>
+   <input type="text">
+   <main></main>
+   <script>
+     var inpt = document.querySelector('input')
+     document.onkeyup=function(e){
+       var val =inpt.value
+      //  判断是否按下的回车键
+      if (e.keyCode == 13) {
+        if(val.trim().length!=0){
+              //  有内容
+              var p = document.createElement('p')
+              p.innerHTML=val+'<span>&times;</span>'
+              document.querySelector('main').appendChild(p)
+              inpt.value=''
+              p.children[0].onclick=function(){
+                this.parentElement.remove()
+              }
+        }else{
+          alert('请输入内容')
+        }
+      }
+     }
+   </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 事件绑定方式一 -->
+    <button onclick="clickEvt(this)">事件绑定1</button>
+    <button>事件绑定2</button>
+    <button>事件绑定3</button>
+    <script>
+        // 事件：用户行为触发如： 点击  滑动  键盘事件...
+
+        // 函数都会有this，但是this的指向性不是固定的，
+        // 注意，函数的this指向取决于谁调用该函数，this指向就指向谁
+        function clickEvt(el){
+            console.log('点击');
+            console.log(this); //window
+            console.log(el);//button
+            // console.log(event);//event 事件(事件参数，任何事件都有对应的事件参数)
+        }
+
+        // 在全局上定义的变量或者函数其实是针对window对象上定义的属性和方法
+        // 只不过在定义的时候，可以将window进行省略不写
+        // var a = 10
+        // console.log(a);
+        // console.log(window.a);
+        // console.log(this);  //window对象
+
+        // function add(){
+        //     console.log(this);
+        // }
+        // add() //window对象
+        // window.add() //window对象
+
+
+        // 第二种绑定方式：
+        var btn = document.querySelector('button:nth-child(2)')
+        btn.onclick = function(e){
+            console.log(this);//button
+            console.log(event); //事件
+            console.log(e); //对事件参数进行简化操作，要先在形参位置接受一下
+        }
+
+
+        // 第三种绑定方式：
+        var btn_three = document.querySelector('button:nth-child(3)')
+        btn_three.addEventListener('click',function(){
+            console.log(this);//button
+            console.log(event); //事件
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    main{
+      width: 80%;
+      margin: auto;
+    }
+    header{
+      border-bottom: 1px solid #999;
+      padding-bottom: 5px;
+      padding-left: 5px;
+    }
+    header span{
+      cursor: pointer;
+    }
+    ul{
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    li{
+      list-style: none;
+      width: 33%;
+      margin: 15px 0;
+    }
+    li img{
+      width: 40%;
+      vertical-align: top;
+    }
+    li>div{
+      display: inline-block;
+      width: 55%;
+    }
+    p,h4{
+      margin: 0;
+    }
+    h4{
+      font-size: 15px;
+      min-height: 60px;
+    }
+    p{
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    p span:first-child{
+      color: red;
+      margin-right: 5px;
+    }
+    p del{
+      font-size: 12px;
+      color: #999;
+    }
+    .active{
+      color: greenyellow;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span>销量⬇</span>
+      <span>价格⬇</span>
+    </header>
+    <ul>
+
+    </ul>
+  </main>
+  <script src="./bookdata.js"></script>
+  <script>
+    // 进行数据渲染
+    function initData(){
+      var str=''
+      for (var i = 0; i < bookArr.length; i++) {
+        str+='<li><img src="'+bookArr[i].img+'"/><div><h4>'+bookArr[i].title+'</h4><p>作者：'+ bookArr[i].author+'</p><p><span>￥'+ bookArr[i].newprice+'</span><del>￥'+ bookArr[i].oldPrice+'</del></p><p>销量：'+ bookArr[i].num+'</p></div></li>'
+      }
+      document.querySelector('ul').innerHTML=str
+    }
+     initData()
+
+    var spans = document.querySelectorAll('header span')
+    // 记录上一次的操作
+    var prev = spans[0]
+    for (var i = 0; i < spans.length; i++) {
+     spans[i].onclick=function(){
+       prev.className=''
+       this.className='active'
+      if(this.innerText.includes('价格')){
+        // 做价格排序
+        bookArr.sort(function(a,b){
+          return b.newprice-a.newprice
+        })
+      }else{
+        // 做销量排序
+        bookArr.sort(function (a, b) {
+          return b.num - a.num
+        })
+      }
+      initData()
+       
+      //  操作完后，将本次操作记录为上一次操作，以此来进行替换
+       prev = this
+     }
+   }
+
+
+  </script>
+</body>
+</html>

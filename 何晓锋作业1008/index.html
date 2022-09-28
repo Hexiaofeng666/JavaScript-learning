@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<br lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./demodata.js"></script>
+    <style>
+        body {
+            width: 100%;
+        }
+
+        /* main {
+
+        } */
+        body>div {
+            margin: 20px auto;
+            display: flex;
+            width: 60%;
+            height: 30px;
+        }
+
+        div>input {
+            width: 100%;
+            height: 100%;
+            border: 3px solid #FF0d00;
+            font-size: 18px;
+            text-indent: 10px;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        div>button:nth-of-type(1) {
+            width: 80px;
+            height: 38px;
+            font-size: 18px;
+            color: #FFF;
+            background-color: red;
+            border: 3px solid red;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        ul>li {
+            list-style-type: none;
+            margin-top: 10px;
+            display: inline-block;
+            width: 20%;
+            margin: 10px 2%;
+            vertical-align: top;
+        }
+
+        ul h2 {
+            color: red;
+        }
+
+        header {
+            background-color: rgb(197, 194, 194);
+            padding: 10px 0;
+        }
+
+        header>button {
+            /* width: 5%; */
+            height: 28px;
+            /* font-size: 8px; */
+            color: black;
+            background-color: white;
+            /* border: 3px solid red; */
+            margin: 0 10px;
+        }
+
+        .active {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" placeholder="请输入书名" id="input"><button>搜索</button>
+    </div>
+    </br>
+    <header>
+        <button>综合↓</button><button>评论数↓</button><button>价格↓↑</button><input type="text"> —— <input
+            type="text"><button>确定</button>
+    </header>
+    <main>
+        <ul>
+
+        </ul>
+    </main>
+    <script>
+        // console.log(data);
+        var ul = document.querySelector("ul")
+        var btn = document.querySelectorAll("button")
+        var input = document.querySelectorAll("input")
+        var mystr = data.slice(0)
+        var flag = 1
+
+        function load() {
+            var str = ''
+            for (var i = 0; i < mystr.length; i++) {
+                str += '<li><img src="' + mystr[i].src + '"/><div><h2>' + mystr[i].price + '</h2><p><p>' + mystr[i]
+                    .name +
+                    '</p>' + mystr[i].nums + '条评论<p><span>' + mystr[i].public + '</div></li>'
+            }
+            ul.innerHTML = str
+        }
+        load()
+        // main.innerHTML = str
+        btn[0].onclick = function () {
+            var strr = []
+            var val = input[0].value
+            for (let i = 0; i < mystr.length; i++) {
+                if (mystr[i].name.indexOf(val) != -1) {
+                    strr.push(mystr[i])
+                    mystr[i].name = mystr[i].name.replace(val, '<b style="color:red;">' + val + '</b>')
+                }
+            }
+
+            mystr = strr
+            load()
+            // console.log(this);
+            // if (strr = []) {
+            //     alert("无数据！")
+            // }
+        }
+        var prev = btn[1]
+        prev.className = 'active'
+
+        btn[1].onclick = function () {
+            if (prev) {
+                prev.className = ' '
+            }
+            this.className = 'active'
+            prev = this
+            mystr = data
+            load()
+        }
+        btn[2].onclick = function () {
+            if (prev) {
+                prev.className = ' '
+            }
+            this.className = 'active'
+            prev = this
+            mystr.sort(function (a, b) {
+                return b.nums - a.nums
+            })
+            load()
+            // console.log(data);
+            // console.log(mystr);
+        }
+        btn[3].onclick = function () {
+            if (prev) {
+                prev.className = ' '
+            }
+            this.className = 'active'
+            prev = this
+            if (flag == 1) {
+                mystr.sort(function (a, b) {
+                    return b.price.slice(1) - a.price.slice(1)
+                })
+                flag--
+            } else if (flag == 0) {
+                mystr.sort(function (a, b) {
+                    return a.price.slice(1) - b.price.slice(1)
+                })
+                flag++
+            }
+            load()
+        }
+        btn[4].onclick = function () {
+            var btnone = input[1].value
+            var btntwo = input[2].value
+            mystr = data.filter(function (value, index, arr) {
+                if (parseInt(value.price.slice(1)) >= btnone && parseInt(value.price.slice(1)) <= btntwo) {
+                    return value;
+                }
+                // console.log(value);
+            })
+            load()
+        }
+    </script>
+</body>
+
+</html>

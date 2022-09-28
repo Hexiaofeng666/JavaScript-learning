@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {}
+
+        main>div {
+            display: flex;
+            /* justify-content: space-between; */
+            height: 22px;
+            overflow: hidden;
+        }
+
+        main>p:nth-of-type(1) {
+            /* position: relative;
+           
+            height: 50px;
+            line-height: 19px;
+            margin: 0; */
+            /* display: flex;
+            justify-content: space-between; */
+        }
+
+        main img {
+            position: relative;
+            top: 2px;
+            height: 41px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div><span>点击星星就能评价</span></div>
+        <p>3分（质量一般，没有卖家描述的那么好)</p>
+    </main>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+        var msg = ["很不满意|差得太离谱，与卖家描述的严重不符，非常不满",
+            "不满意|部分有破损，与卖家描述的不符，不满意",
+            "一般|质量一般，没有卖家描述的那么好",
+            "满意|质量不错，与卖家描述的基本一致，还是挺满意的",
+            "非常满意|质量非常好，与卖家描述的完全一致，非常满意"
+        ]
+        for (let i = 0; i < 5; i++) {
+            $('div').eq(0).append('<img src="./star.png"></img>')
+            $('img').eq(i).click(function () {
+                for (let l = 0; l < 5; l++) {
+                    $('img').eq(l).css({
+                        'top': '2px',
+                    })
+                }
+                for (let j = 0; j <= i; j++) {
+                    $('img').eq(j).css({
+                        'top': '-23px',
+                    })
+                }
+                $('div span').eq(1).text((i + 2) + '分' + msg[i + 1])
+                $('main p').text((i + 1) + '分' + msg[i])
+                // $('div').eq(0).append('<span>'+(i+1)+'分' + msg[i] + '</span>')
+            })
+        }
+        $('div').eq(0).append('<span>分' + msg[1] + '</span>')
+    </script>
+</body>
+
+</html>

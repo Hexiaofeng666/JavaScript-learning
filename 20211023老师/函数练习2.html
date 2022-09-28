@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text">
+  <button>计算</button>
+  <script>
+    // 练习2：
+
+    // 1. 在页面上有个input输入框，在输入框中输出一串数字，点击“计算”按钮，
+    // 获取输入框的内容（输入的必须数字并且大于0， 数字之间使用空格隔开）
+
+    // 2. 封装一个求平均数的函数，对于其数字进行平均数的计算
+    // 3. 封装一个求和的函树，对其输入框的数字进行求和
+    // 4. 封装一个乘法函数， 对其平均数和 求和数进行乘法运算
+
+    // 5.要在页面上分别打印出： 平均为：     和为：       乘为：
+
+     var input = document.querySelector('input')
+     var btn = document.querySelector('button') 
+     btn.onclick=function(){
+       var value = input.value
+      //  条件1 必须是数字
+      var case1 = !isNaN(value.replaceAll(' ',''))
+
+      // 条件2  必须大于0(有效数字)
+      var numarr = value.split(' ').filter(function(item){
+        if(item!='') return item
+      })
+
+      // 判断数组都是大于0并不以0开头的整数
+      var result = numarr.find(function(item){
+        if(item<=0||item.startsWith('0')&&!item.includes('.')){
+          return item
+        }
+      })
+
+      if(case1&&result==undefined){
+        // 进行函数调用
+        console.log('和为'+ sum(numarr)+'平均数为：'+ sqrt(numarr)+'乘积：'+ minu(numarr));
+      }
+     }
+
+    //  求和
+    function sum(arr){
+      var sum = 0
+      for (var i = 0; i < arr.length; i++) {
+        sum+=arr[i]*1
+      }
+      return sum
+    }
+
+    
+
+    function sqrt(arr){
+      return sum(arr)/arr.length
+    }
+
+    function minu(arr){
+      return sum(arr)*sqrt(arr)
+    }
+
+  </script>
+</body>
+</html>

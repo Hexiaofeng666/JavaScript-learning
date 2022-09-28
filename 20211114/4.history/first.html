@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    这是第一个页面：1
+    <button>跳转到下一条历史记录(得先有返回的存在)</button>
+    <button>进入页面二</button>
+    <button>进入页面三</button>
+    <script>
+      document.querySelectorAll('button')[0].onclick=function(){
+        // 跳转到下一条历史记录
+        history.forward()
+      }
+
+
+
+
+
+
+
+
+
+      
+      document.querySelectorAll('button')[1].onclick = function () {
+        location.href='./second.html'
+      }
+      document.querySelectorAll('button')[2].onclick = function () {
+        location.href='./three.html'
+      }
+    </script>
+</body>
+</html>

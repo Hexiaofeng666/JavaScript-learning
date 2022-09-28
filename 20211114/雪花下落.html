@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background-image: url('./图片1.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    div {
+      position: absolute;
+      border-radius: 50%;
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    var w = document.documentElement.clientWidth
+    var h = document.documentElement.clientHeight
+
+    function snow() {
+      var div = document.createElement('div')
+      var size = Math.random() * 5 + 5
+      div.style.width = size + 'px'
+      div.style.height = size + 'px'
+      var t = Math.random() * h
+      var l = Math.random() * w
+      // h-size确保小球不会出现溢出屏幕范围的情况
+      t = t > (h - size) ? (h - size) : t
+      l = l > (w - size) ? (w - size) : l
+      div.style.top = t + 'px'
+      div.style.left = l + 'px'
+      document.body.appendChild(div)
+      setInterval(function () {
+        t = t + Math.random() * 5 + 8
+        t = t > (h - size) ? 0 : t
+        div.style.top = t + 'px'
+      }, 100);
+
+    }
+    for (var i = 0; i < 200; i++) {
+      snow()
+    }
+  </script>
+
+</body>
+
+</html>

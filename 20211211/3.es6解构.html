@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 10,b=30,c=20
+        // 1.解构
+        // 对数组进行数据拆分
+        var [a,b]=[2,5]
+        console.log(a);
+
+        //  接收/拆分多个数据
+        // ...
+        var [a,...b]=[2,3,5,7,8,10]
+        console.log(a,b);
+
+        var nums = [1,2,3]
+        var str = ['a','b',...nums]
+        console.log(str);
+
+        // 对象
+        var boy = {
+            name:'Amy',
+            // 对对象的赋值进行解构，当key值和value值对应的变量名一致的时候，
+            // 可以进行简写
+            // age,
+            say:()=>{
+                console.log('会说英文');
+            }
+        }
+        // console.log(boy.name);
+        // 定义的变量名要和赋值对象的key值一致，才能直接通过变量名要操作对象中对应的值
+        var {name,say}=boy
+        console.log(name);
+        say()
+
+        // 2.对函数进行默认值的设置
+        function add(a=1,b=1){
+            // 导致数字为0的加法运算无法计算
+            // a=a||1
+            // b=b||1
+            console.log(a+b);
+        }
+        add(3,5)
+        add(0,0)
+        // 3.set集合(unique 唯一)
+        // set提供了新的数据解构。类似数组，但是在集合中每一个元素都是唯一的
+        var numarr=[2,3,1,2,2,2,4,1,3,5,2]
+
+        // 利用set集合对象，将数组传递进去进行去重
+        var setarr = new Set(numarr)
+        console.log(setarr);
+
+        // 如何将set集合对象转为数组
+        console.log([...setarr]);
+
+        
+    </script>
+</body>
+</html>

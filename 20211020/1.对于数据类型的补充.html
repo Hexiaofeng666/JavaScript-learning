@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 根据数据值的类型,对数据进行分类
+        // 根据“存储数据的值”分为: number string null boolean undefined object Array
+        // 根据存储方式进行划分:基本类型引用类型
+        // 基本类型：采用“栈”方式进行存储(所有基本数据类型都是  基本类型)
+        // 引用类型：采用“堆”方式进行存储(对象  数组等 都是 引用类型)
+
+        // 基本类型的特点，，对于基本类型的数据操作，都是将其的值进行复制一份操作，
+        //    所以只要不对其进行重新赋值，是不会造成形象的
+        var a = 10
+        var b = a
+        b+10
+        console.log(a,b);
+
+        var str = 'i like apple'
+        str.replace('apple','pink')
+        console.log(str);
+
+        // 引用类型，是对其存储地址进行操作，变量之间的赋值，也是对存储地址进行赋值，
+        // 所以一旦有一个地方对其进行修改，那么其他的变量对应的数据也会发生改变
+        var boy = {
+            name: 'tom',
+            age:18,
+            address:'福州',
+            sex:'男'
+        }
+        console.log(boy);
+        var boy2 = {}
+        // key 为name,age,address,sex
+        // forin循环
+        for(const key in boy){
+            boy2[key] = boy[key]
+            console.log(boy[key]);
+        }
+        // var boy2=boy
+
+        boy2.name='jane'
+        console.log(boy2);
+        console.log(boy);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            height: 10px;
+            width: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="addhang()">添加行</button>
+    <button onclick="addlie()">添加列</button>
+    <button onclick="addwidth()">变宽</button>
+    <button onclick="addheight()">变高</button>
+    <script>
+       
+        var hang = 10
+        var lie = 5
+        function load() {
+            var table= document.createElement('table')
+            for (let i = 1; i < hang; i++) {
+            var tr = table.insertRow()
+            for (let j = 1; j <= lie; j++) {
+                var td = tr.insertCell()
+                // td.innerHTML=j+'*'+j+'='+i*j
+                
+            }
+            document.body.appendChild(table)
+        }
+        }
+        load()
+        // 添加行
+        function addhang() {
+            var table = document.querySelector('table')
+            document.body.removeChild(table)
+            hang++
+            load()
+        }
+        // 添加列
+        function addlie() {
+            var table = document.querySelector('table')
+            document.body.removeChild(table)
+            lie++
+            load()
+        }
+        function addwidth() {
+            var table = document.querySelector('table')
+            var td = document.querySelector('td')
+            document.body.removeChild(table)
+            td.style.width =td.style.width + 10 + 'px'
+            load()
+        }
+    </script>
+</body>
+</html>

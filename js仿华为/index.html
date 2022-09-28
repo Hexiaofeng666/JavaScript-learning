@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            width: 1000px;
+            /* display: flex; */
+        }
+
+        main {
+            display: inline-block;
+            margin: auto;
+            text-align: center;
+            margin-left: 100px;
+            /* position: relative; */
+        }
+
+        main>section {
+            position: relative;
+        }
+
+        main>section>img {
+            width: 400px;
+            height: 400px;
+        }
+
+        section>div {
+            width: 180px;
+            height: 240px;
+            position: absolute;
+            /* top: 0;
+            left: 10px; */
+            background-color: gray;
+            opacity: 0.5;
+            display: none;
+        }
+
+        main>div:nth-of-type(1) {
+            display: flex;
+            cursor: pointer;
+        }
+
+        main>div:nth-of-type(1)>img {
+            width: 60px;
+            height: 60px;
+            /* align-items: center; */
+            margin-top: 10px;
+            border: 1px solid white;
+        }
+
+        button {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: white;
+            color: #999;
+            border: 1px solid #999;
+            margin-top: 23px;
+            cursor: pointer;
+        }
+
+        body>div {
+            background-color: red;
+            width: 400px;
+            height: 500px;
+            display: inline-block;
+            /* margin: auto; */
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <img src="./imgs/p1.png" alt="">
+            <div></div>
+        </section>
+        
+        <div>
+            <button>&lt;</button>
+            <img src="./imgs/p1.png" alt="">
+            <img src="./imgs/p2.png" alt="">
+            <img src="./imgs/p3.png" alt="">
+            <img src="./imgs/p4.png" alt="">
+            <img src="./imgs/p5.png" alt="">
+            <button>&gt;</button>
+        </div>
+
+    </main>
+    <div>
+
+    </div>
+    <script>
+        var btn = document.querySelectorAll('button')
+        var simg = document.querySelectorAll('main>div>img')
+        var img = document.querySelector('main>section>img')
+        var section = document.querySelector('section')
+        var div = document.querySelector('section>div:nth-of-type(1)')
+        // 给左右按钮绑定事件
+        btn.forEach((item, index) => {
+            item.onclick = function () {
+                simg.forEach((imgitem, imgindex) => {
+                    imgitem.src = "./imgs/p" + (imgindex + index + 1) + ".png"
+                });
+            }
+        });
+        simg.forEach((item, index) => {
+            item.onmouseover = function () {
+                img.src = item.src
+                simg.forEach((itemone) => {
+                    itemone.style.border = '1px solid white'
+                })
+                item.style.border = '1px solid rgb(160, 27, 27)'
+            }
+        });
+        section.onmouseenter = function () {
+            // div.style.display = 'block'
+            console.log(1);
+            // event.stopPropagation()
+            
+            section.onmousemove = function (e) {
+                // console.log(e.clientX);
+                // console.log(div.offsetLeft);
+                // console.log(div.clientWidth/2);
+                // event.stopPropagation()
+                // e.preventDefault()
+                div.style.left = e.clientX - (div.clientWidth / 2) -100 + 'px'
+                div.style.top = e.clientY - (div.clientHeight / 2) -60 + 'px'
+                // console.log(e.clientX - (div.clientWidth / 2));
+                // console.log(div.style.left);
+                if (div.offsetLeft<(-div.clientWidth / 2)||div.offsetLeft>(img.clientWidth-(div.clientWidth / 2))||div.offsetTop<(-div.clientHeight / 2)||div.offsetTop>(img.clientHeight-(div.clientHeight / 2))) {
+                    div.style.display = 'none'
+                }
+                else div.style.display = 'block'
+            }
+        }
+
+        // section.onmouseleave = function () {
+        //     div.style.display = 'none'
+        //     console.log(2);
+        // }
+    </script>
+</body>
+
+</html>

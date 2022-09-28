@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<input type="text" placeholder="请输入内容（输入的必须数字并且大于0，数字之间使用空格隔开)">
+<button onclick="myclick();">计算</button>
+
+<body>
+    <script>
+        //练习2:
+        // 1．在页面上有个输入框，在输入框中输出一串数字，点击“计算”按钮，
+        // 获取输入框的内容（输入的必须数字并且大于0，数字之间使用空格隔开)
+        // 2．封装一个求平均数的函数，对于其数字进行平均数的计算
+        // 3．封装一个求和的函树，对其输入框的数字进行求和
+        // 4．封装一个乘法函数，对其平均数和求和数进行乘法运算
+        // 5.要在页面上分别打印出:平均为: 和为: 乘为:
+        var resultone
+        var resulttwo
+        var resultthree
+        function sum(num) {
+            resulttwo += num
+        };
+        function mult(num) {
+            resultthree = num * resultthree
+        }
+        function myclick() {
+            resultone = 0
+            resulttwo = 0
+            resultthree = 1
+            var num = document.querySelector('input').value
+            var arr = num.split(' ').filter(function(item){
+                if(item!='') return item
+            })
+            console.log(arr);
+            for (var i = 0; i < arr.length; i++) {
+                var mynum = parseInt(arr[i])
+                if (arr[i] > 0 && typeof (mynum) == 'number' ) {
+                    sum(mynum)
+                    mult(mynum)
+                } else {
+                    alert('非数字或者小于零！！！')
+                }
+            }
+            resultone = resulttwo / arr.length
+            console.log('平均为:' + resultone + '和为:' + resulttwo + ' 乘为:' + resultthree);
+        }
+    </script>
+</body>
+
+</html>

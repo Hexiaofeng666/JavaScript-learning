@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div,main{
+      width: 600px;
+      margin: auto;
+      padding: 10px;
+      margin-top: 15px;
+    }
+    div{
+      border: 2px solid blue;
+      line-height: 25px;
+    }
+    span{
+      background-color: red;
+      color: white;
+      padding:  4px 10px;
+      margin-right: 10px;
+    }
+    main{
+      border: 2px solid green;
+      min-height: 300px;
+    }
+    img{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 80px;
+    }
+  </style>
+</head>
+<body>
+    <div>
+      <span draggable="true">HTML5</span>
+      <span draggable="true">Css</span>
+      <span draggable="true">javaScript</span>
+      <span draggable="true">PHP</span>
+      <span draggable="true">java</span>
+    </div>
+    <main></main>
+    <img src="./回收站.png" alt="">
+    <script>
+      var spans = document.querySelectorAll('span')
+      for (var i = 0; i < spans.length; i++) {
+        spans[i].ondragstart=function(e){
+          e.dataTransfer.setData('text','<add>'+this.innerText)
+        }
+      }
+
+    var main =document.querySelector('main')
+ 
+    main.ondragover=function(e){
+      e.preventDefault();
+    }
+    main.ondrop = function (e) {
+      // .startsWith 以。。。开头
+      if(e.dataTransfer.getData('text').startsWith('<add>')){
+        var span = document.createElement('span')
+        span.draggable=true
+        // substr(5)  字符串截取后五位
+        span.innerText=e.dataTransfer.getData('text').substr(5)
+        // 先存储一个id，释放拖拽时可以传值到后面
+        span.ondragstart=function(e){
+          this.id='remove'
+          e.dataTransfer.setData('remove',this.id)
+        }
+        this.appendChild(span)
+      }
+     
+    }
+    
+    var img = document.querySelector('img')
+    img.ondragover=function(e){
+      // e.preventDefault()
+      return false;
+    }
+    img.ondrop=function(e){
+      var id =e.dataTransfer.getData('remove')
+      // id为空，说明是从头部传送过去的，则选择不发生事件
+      if(!id) return;
+      var el = document.getElementById(id)
+      el.remove()
+    }
+
+
+    </script>
+</body>
+</html>

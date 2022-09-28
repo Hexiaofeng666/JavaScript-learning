@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+    <div id='one'>div标签</div>
+    <!-- jquery是一个js库，是对js中的方法/属性等操作进行封装简化 -->
+    <!-- 要使用jq进行操作的时候，首先要先引入jq -->
+    <script>
+        // 原生js方式获取标签
+        var div = document.querySelector('div')
+        console.log(div);
+
+        // JQ获取,返回的是一个jq对象集合
+        // jq中，使用 $ 来代替jQuery对象
+        console.log(jQuery('div'));
+        console.log($('div'));
+        console.log($('#one'));
+
+        console.clear()
+        // 原生获取的标签使用原生的方法，jq获取的jq对象使用jq的方法
+
+
+        // 如何将原生的标签和jq对象进行相互转换
+
+        // 将jq对象转为原生的DOM元素
+        console.log($('#one')[0]);
+        $('#one')[0].title = '标题'
+
+        // 将原生的DOM转为jq对象
+        console.log($(div));
+    </script>
+</body>
+</html>

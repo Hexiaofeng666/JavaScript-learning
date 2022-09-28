@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+    <script>
+        // 对于普通的函数使用function作为关键字来进行定义
+        // setInterval(function(){},interval)
+        // setInterval(() => {}, interval);
+
+        // var btn = document.querySelector('button')
+        // btn.onclick = function(){
+        //     console.log(this);
+        // }
+        // 将函数进行简化 (形参，...)=>{代码块}
+        // btn.onclick=()=>{
+        //     console.log('点击');
+        // }
+
+        // 箭头函数的使用注意点：
+        // 1.使用的时候，不需要再使用function关键字
+        // 2.普通函数中的this指向是，哪个对象调用该函数就指向哪个对象（谁调用指向谁)
+        //  箭头函数中，this指向是指向当前定义!!!函数的上一层环境对象的值
+        // 3.当实际的实参的个数不确定的，可以在普通函数中通过arguments来获取长度个数不一致的实参
+        // 但是箭头函数不可以使用，箭头函数在获取长度不一致的实参的时候，使用"...自定义名"来接收
+
+
+        var girl = {
+            name:'Amy',
+            say:function(area,str){
+                console.log(this);
+                console.log(str);
+            },
+            eat:(...strs)=>{
+                console.log(this);
+                // console.log(arguments);//报错
+                console.log(strs);
+            },
+            walk:function(){
+                setTimeout(() => {
+                    console.log(this);
+                }, 1000);
+            },
+            add:function(){
+                // 获取函数的传递参数
+                // console.log(arguments);
+                var sum = 0
+                for (let i = 0; i < arguments.length; i++) {
+                    sum+=arguments[i]
+                }
+                console.log(sum);
+            }
+        }
+        // girl.say() //this == girl
+        // var people = girl.say
+        // people() //this == window
+
+        // girl.eat() //this==window
+        // girl.walk() //this == girl
+
+        // 函数传参
+        // girl.say('中国','中国话')
+        girl.add(3,4)
+        girl.add(3,4,6)
+        girl.add(3,4,6,7)
+        girl.eat('牛奶','面包')
+
+        var boy = {
+            name: 'Tom',
+            find: function(){
+                return{
+                    name: 'kangkang',
+                    speak:()=>{
+                        console.log(this);
+                    }
+                }
+            },
+            friend:{
+                name:'Aline',
+                speak:()=>{
+                    console.log(this);
+                }
+            }
+        }
+        boy.find().speak() //this==boy
+        boy.friend.speak() //this==window
+    </script>
+</body>
+</html>

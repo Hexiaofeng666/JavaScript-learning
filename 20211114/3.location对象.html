@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <!-- 页面切换 -->
+    <a href="http://www.baidu.com">百度</a>
+    <button>点击跳转到淘宝页面</button>
+    <script>
+      // DOM:document  针对文档对象进行操作（标签） 
+      // BOM: 针对浏览器对象的操作
+      // location： 浏览器信息对象
+
+      var btn = document.querySelector('button')
+      btn.onclick=function(){
+        // 页面跳转
+        // location.href='http://www.baidu.com' //操作属性
+        // location.assign('http://www.baidu.com') //操作方法
+        
+        //页面跳转后，历史记录被替换了，所以无法返回 
+        // location.replace('http://www.baidu.com')
+       
+        // 重新加载
+        location.reload()
+      }
+
+
+    </script>
+</body>
+</html>

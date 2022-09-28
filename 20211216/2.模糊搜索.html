@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      text-align: center;
+      width: 500px;
+      margin-top: 10px;
+    }
+
+    td,
+    th {
+      line-height: 30px;
+    }
+    span {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <input type="text" placeholder="搜索">
+    <table cellspacing="0" border="1">
+      <thead>
+        <tr>
+          <td>姓名</td>
+          <td>性别</td>
+          <td>年龄</td>
+          <td>电话号码</td>
+          <td>地址</td>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </main>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script>
+    var data = [{
+        name: '林兵',
+        sex: '男',
+        age: 18,
+        phone: '12345678941',
+        address: '富顺'
+      },
+      {
+        name: '赖玉英',
+        sex: '女',
+        age: 18,
+        phone: '12345678942',
+        address: '南充'
+      },
+      {
+        name: '潘旭',
+        sex: '女',
+        age: 20,
+        phone: '12345678912',
+        address: '富顺'
+      },
+      {
+        name: '王威平',
+        sex: '男',
+        age: 20,
+        phone: '97543152146',
+        address: '广元'
+      },
+      {
+        name: '李丹',
+        sex: '女',
+        age: 30,
+        phone: '14725836910',
+        address: '江安'
+      },
+      {
+        name: '陈志樑',
+        sex: '男',
+        age: 20,
+        phone: '31546287451',
+        address: '富顺'
+      },
+      {
+        name: '郭仕宏',
+        sex: '男',
+        age: 20,
+        phone: '51240316845',
+        address: '南充'
+      }
+    ]
+
+
+
+    // 初始渲染
+    function initData(arr) {
+      var str = ''
+      if (arr.length) {
+        arr.forEach(item => {
+          str += `
+              <tr>
+                <td>${item.name}</td>
+                <td>${item.sex}</td>
+                <td>${item.age}</td>
+                <td>${item.phone}</td>
+                <td>${item.address}</td>
+              </tr>
+            `
+        })
+      } else {
+        str = `<tr><td colspan="5">暂无你搜索的内容</td></tr>`
+      }
+
+      $('tbody').html(str)
+    }
+    initData(data)
+
+
+
+    // 对搜索框进行实时检测，获取到搜索框的关键字
+
+    $('input')[0].oninput = function () {
+      var keyword = $(this).val()
+      // 根据关键字进行数据筛选
+      var newarr = data.filter(item => {
+        for (const key in item) {
+          if (String(item[key]).includes(keyword)) {
+            // console.log(item[key]);
+            return item
+          }
+        }
+      })
+
+      var strarr = []
+      for (let i = 0; i < newarr.length; i++) {
+        // 利用json进行对象地址转换，转换为一个数据和原来对象一样的新对象（此时的存储地址就不是同一个）
+        var obj = JSON.parse(JSON.stringify(newarr[i]))
+        for (const key in obj) {
+          obj[key] = String(obj[key]).replace(keyword, `<span>${keyword}</span>`)
+          console.log(obj[key]);
+        }
+        strarr.push(obj)
+      }
+      // console.log(strarr);
+      // console.log(newarr); //如果没有符合要求，则返回一个空数组 
+      initData(newarr)
+
+    }
+
+
+    // var prople = [{
+    //   name: '张三'
+    // }]
+
+    // var student = [prople[0]]
+    // student[0].name = '李四'
+
+    // console.log(prople);
+    // console.log(student);
+  </script>
+</body>
+
+</html>

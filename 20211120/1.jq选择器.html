@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+   <form action="">
+     <input type="text">
+     <input type="text" disabled>
+     <input type="password" name="" id="">
+     <input type="tel" name="" id="" disabled>
+     <input type="text">
+     <input type="radio" name="" id="" checked>男
+     <input type="radio" name="" id="">女
+     <input type="text" disabled>
+     <input type="file" name="" id="">
+    </form>
+  <script>
+    // console.log($('input:lt(4)'));
+    // console.log($('input[type="text"]'));
+
+    // 查找到input的类型为text的匹配元素
+    console.log($(':text'));
+    console.log($(':password'));
+    console.log($(':file'));
+    // console.log($(':tel'));  对于表单空间的简化筛选不是针对所有的类型都可以
+
+    
+    // 将表单控件中所有的input,select,button,textarea 标签都获取到
+    // console.log($(':input'))
+
+    console.clear()
+    // 根据表单的属性状态进行筛选标签
+    // 获取当前单选框/多选框被激活的标签
+    console.log($(':checked'));
+
+    // :selected 针对获取到当前被选中的下拉框内容
+
+    // :disabled 获取所有不可使用的标签
+    console.log($(':disabled'));
+    
+    // :enabled 获取所有可以使用的标签
+    console.log($(':enabled'));
+
+
+
+  </script>
+</body>
+</html>

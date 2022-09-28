@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: #f2f2f2;
+    }
+    main{
+      width: 70%;
+      margin: auto;
+    }
+    div{
+      background-color: white;
+      border: 1px solid #ccc;
+      margin: 20px;
+    }
+    .list{
+      padding: 5px;
+      display: none;
+      
+    }
+    span{
+      display: inline-block;
+      padding: 3px 10px;
+      /* font-size: 17px; */
+      border: 1px solid #e6e6e6;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .top{
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+    }
+    section{
+      width: 85%;
+    }
+    button{
+      color: white;
+      background-color: #009688;
+      border: none;
+      line-height: 33px;
+      height: 33px;
+    }
+
+    .show{
+      display: block;
+    }
+    .choosed{
+      border-color: #ccc;
+      color: #ccc;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <main>
+    <div class="top">
+      <section class="choose"></section>
+      <button>展开标签库</button>
+    </div>
+    <div class="list"></div>
+  </main>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="./data.js"></script>
+  <script>
+      data.forEach(function(item,i){
+        $('.list').append('<span data-choose="false" data-index="'+i+'">'+item+'</span>')
+      });
+
+      $('button').click(function(){
+        $('.list').toggleClass('show')
+        var str= $('.list').hasClass('show') ? '收起标签库':'展示标签库'
+        $(this).text(str)
+      })
+
+      $('.list span').click(function(){
+        if($('.choose').children().length < 8){
+           if(!$(this).data().choose){
+              $('.choose').append($(this).clone().text('x'+ $(this).text()))
+              $(this).data('choose',true).addClass('choosed')
+            }
+        }else{
+          alert('最多只能选择8个')
+        }
+      })
+
+      $('.choose').on('click','span',function(){
+         $(this).remove()
+        //  怎么从span集合中找到当前被移除的标签？
+        $('.list span').eq($(this).data().index).data('choose',false).removeClass('choosed')
+      })
+  </script>
+</body>
+</html>

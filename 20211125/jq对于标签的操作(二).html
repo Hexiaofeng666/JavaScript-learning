@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color{
+            font-size: 30px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div title="块标签"  class="size" id="two">
+        <p>这是内容</p>
+    </div>
+    <div>
+        div内容
+    </div>
+    <!-- <main></main> -->
+    <button>删除</button>
+    <button>获取标签的信息</button>
+    <button>切换样式</button>
+    <input type="checkbox" >
+    <input type="text" name="" id="" value="123">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+
+    <script>
+        // 替换
+        // 将匹配到的元素整体进行替换
+        // $('div').replaceWith('<main></main>') //将div替换成main
+        // $('<main></main>').replaceAll('div') //使用main标签替换div(与上面相反)
+
+        // 移除标签
+        // empty() 清空匹配元素的内容，变为空标签
+        // $('div').empty()
+
+        // remove() 移除标签 完全删除
+        // $('div').remove()
+
+        // detach() 移除标签 虽然对标签进行删除了，但是在该标签上存储的值/事件，在重新用回
+        //                   改标签的时候，是有找回来的
+
+        // $('div').detach()
+
+        var el = $('div')
+        el.data('num',10)
+        $('button').eq(0).click(function () {
+            // el.remove()
+            el.detach()
+        })
+        $('button').eq(1).click(function () {
+            $('body').prepend(el)
+            console.log(el.data());
+        })
+
+
+        //-----------------------对标签的属性(Attribute)操作
+        // 1.查
+        // 获取指定的属性
+        console.log($('div').attr('class'));
+        // 判断匹配的标签是否含有某个指定的class名
+        // console.log($('div').hasClass('three')); //false
+
+        $('input').change(function(){
+            // attr 用于获取标签身上具有的静态属性
+            // console.log($('input')[0].checked);
+
+            // 对于表单控件中动态变化的属性，使用prop操作
+            console.log($(this).prop('checked'));
+        })
+        
+        // 2.增
+        // 增加静态属性
+        $('div').attr('name','标签')
+        // 增加动态属性
+        $('input').prop('checked',true)
+
+        // 3.删
+        $('div').removeAttr('name')
+
+        // 4.改
+        // prop/attr 只要操作的是已经存在的属性，就是做修改
+        $('div').attr('id','double') 
+        // $('input').prop('checked',true)
+
+
+        // 添加class
+        $('div').addClass('one') //新增式的添加(即在原本的class基础上添加新的class名)
+        $('div').removeClass('size') //移除
+
+        // var ischange = true
+        $('button').eq(2).click(function(){
+            // if(ischange){
+            //     $('p').addClass('color')
+            // }else{
+            //     $('p').removeClass('color')
+            // }
+            // ischange = !ischange
+
+            // 对样式进行切换变化，比上面简便
+            $('p').toggleClass('color')
+        })
+
+        // 对于文本内容
+        // html 等同于 innerHtml
+        console.log($('div').eq(0).html());
+        $('div').eq(0).html('<b>aa</b>')
+
+        // text 等同于 innerText
+        console.log($('div').eq(0).text());
+
+        // val等同于表单控件的value属性
+        console.log($(':text').val);
+    </script>
+    
+</body>
+</html>

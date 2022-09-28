@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      position: absolute;
+
+    }
+  </style>
+</head>
+
+<body>
+  <img src="./imgs/down-0.png" alt="" style="left:500px;top:300px">
+  <script>
+    var i
+    window.onkeyup = function (e) {
+      i = 0 //记录图片的变化
+      //  控制方向
+      switch (e.keyCode) {
+        case 38:
+          // 上
+          move('up', -5)
+          break;
+        case 39:
+          // 右
+          move('right', 5)
+          break;
+        case 40:
+          // 下
+          move('down', 5)
+          break;
+        case 37:
+          // 左
+          move('left', -5)
+          break;
+        default:
+          break;
+      }
+    }
+    var img = document.querySelector('img')
+
+    var time
+
+    function move(point, disc) {
+      //  console.log(img.style.top);
+      //  获取小人位置
+      // var t = img.style.top.substr(0, img.style.top.length-2)
+      //  clearInterval(time)
+      //  point 控制方向   disc 控制移动距离
+      img.src = './imgs/' + point + '-0.png'
+      time = setInterval(function () {
+        i++
+        if (i > 27) {
+          clearInterval(time)
+        }
+        var j = i % 4
+        img.src = './imgs/' + point + '-' + j + '.png'
+        if (point == 'up' || point == 'down') {
+          img.style.top = img.offsetTop + disc + 'px'
+        } else {
+          img.style.left = img.offsetLeft + disc + 'px'
+        }
+      }, 100)
+
+
+    }
+
+    //  预习： js的尺寸表    拖拽事件
+  </script>
+</body>
+
+</html>

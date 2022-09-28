@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+   // 练习：
+      // 页面上显示一个弹框：  计算1.矩形面积   或 2. 圆的面积
+      // 选择序号后，显示第二个弹框:请输入矩形的宽和高（圆的半径）
+      // 封装一个函数area，用于计算面积。并且对面积保留两位小数
+
+      var type = prompt(' 计算1.矩形面积   或 2. 圆的面积')
+      var str=type-1?'请输入圆的半径':'请输入矩形的宽和高(W x H)'
+      var value = prompt(str)
+      function area(value) {
+        if(value.includes('x')){
+          // 矩形
+          var valuearr = value.split('x')
+          console.log(valuearr[0]*valuearr[1]);
+        }else{
+          // 圆形
+          console.log((Math.PI*value*value).toFixed(2));
+        }
+      }
+      area(value)
+
+
+    
+      
+</script>
+</body>
+</html>

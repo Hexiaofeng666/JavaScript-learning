@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // js脚本放在页面的任何位置都会被执行，只不过是执行顺序按照代码的从上到下的执行
+        // 一般都是将脚本放在页面中的body和head的结束标签上面
+        // js的全局环境
+        // js：是JavaScript的简称，是一门运行页面的脚本语言，同时也是一门弱类型语言
+        // js的作用：页面的动态效果，逻辑处理甚至是用户交互
+
+        // java强类型：2 int   2.5 float   2.67 double
+        // js弱类型 ： 2   2.5   2.67  统一称为number
+
+
+        // 检测输出
+        // 控制台 ：日志
+        console.log(2);
+
+        console.error('错误');
+        console.warn('提示');
+
+        // 分组查看
+        console.group('第一组');
+        console.log(1);
+        console.log(2);
+        console.log(3);
+        console.groupEnd();
+
+
+        // 对代码进行计时功能
+        console.time('for循环的执行速度');
+        for (let i = 0; i < 50; i++) {
+            console.timeEnd('for循环的执行速度');
+
+        }
+
+
+        // 弹出框
+        alert('普通弹框');
+
+
+        // 用户对话框
+        confirm('弹框');
+
+
+        // 用户输入框
+        prompt('弹框');
+    </script>
+</body>
+</html>

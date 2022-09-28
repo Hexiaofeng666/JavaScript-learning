@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 方法一
+        // var table= document.createElement('table')
+        // for (let i = 1; i < 10; i++) {
+        //     var tr = document.createElement('tr')
+        //     for (let j = 1; j <= i; j++) {
+        //         var td = document.createElement('td')
+        //         td.innerHTML=j+'*'+j+'='+i*j
+        //         tr.appendChild(td)
+                
+        //     }
+        //     table.appendChild(tr)
+        // }
+        // document.body.appendChild(table)
+
+
+        // 方法二
+        var table= document.createElement('table')
+        for (let i = 1; i < 10; i++) {
+            var tr = table.insertRow()
+            for (let j = 1; j <= i; j++) {
+                var td = tr.insertCell()
+                td.innerHTML=j+'*'+j+'='+i*j
+                
+            }
+            document.body.appendChild(table)
+        }
+    </script>
+</body>
+</html>

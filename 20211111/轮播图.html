@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    main{
+      width: 70%;
+      height: 410px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+    }
+    .big{
+      width: 70%;
+    }
+    .small{
+      width: 29%;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    .big,.small div{
+      position: relative;
+
+    }
+    p{
+      position: absolute;
+      margin: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(0,0,0,0.4);
+      color: white;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    .small{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .small div{
+      height: 24.5%;
+      opacity: 0.5;
+    }
+    div.active{
+      opacity: 1;
+    }
+
+
+  </style>
+</head>
+<body>
+   <main>
+     <section class="big">
+       <img src="./imgs/1.jpg" alt="">
+       <p>巴黎 埃菲尔铁塔</p>
+     </section>
+     <section class="small">
+       <div class="active">
+         <img src="./imgs/1.jpg" alt="">
+         <p>巴黎 埃菲尔铁塔</p>
+       </div>
+       <div>
+         <img src="./imgs/2.jpg" alt="">
+         <p>纽约</p>
+       </div>
+       <div>
+         <img src="./imgs/3.jpg" alt="">
+         <p>上海</p>
+       </div>
+       <div>
+         <img src="./imgs/4.jpg" alt="">
+         <p>长城</p>
+       </div>
+     </section>
+   </main>
+   <script>
+     var big = document.querySelector('.big')
+     var small = document.querySelector('.small')
+     
+    //  用于记录图片变化的索引值
+    var index = 0
+    // 记录上一张的图片
+    var prev = small.children[0]
+    function changeindex(){
+        index = index >= 3 ? 0 : index + 1
+        changeimg()
+    }
+
+    function changeimg(){
+      prev.style.opacity = 0.5
+      small.children[index].style.opacity = 1
+      big.children[0].src = './imgs/' + (index + 1) + '.jpg'
+      big.children[1].innerText = small.children[index].children[1].innerText
+      prev = small.children[index]
+      console.log(new Date().getSeconds());
+    }
+
+     var slide=setInterval(changeindex,2000);
+
+     document.querySelector('main').onmouseover=function(){
+       clearInterval(slide)
+     }
+     document.querySelector('main').onmouseout=function(){
+      //  重启定时器
+     slide = setInterval(changeindex, 2000);
+     }
+   
+     for (var i = 0; i < small.children.length; i++) {
+         small.children[i].index=i
+         small.children[i].onclick=function(){
+          index = this.index
+          changeimg()
+         }
+       
+     }
+
+
+
+   </script>
+</body>
+</html>

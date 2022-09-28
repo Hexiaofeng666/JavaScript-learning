@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            padding-top: 80px;
+            text-align: center;
+            position: relative;
+        }
+        img {
+            margin: 20px;
+        }
+        button{
+            background-color: green;
+            cursor: pointer;
+            padding: 5px 20px;
+        }
+        p{
+            position: absolute;
+            margin: 0 calc(50% - 65px);
+            /* display: inline; */
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <p></p>
+        <br>
+        <img src="https://demo.lanrenzhijia.com/demo/112/11228/demo/img/6-point.png" alt="">
+        <br>
+        <img src="https://demo.lanrenzhijia.com/demo/112/11228/demo/img/6-point.png" alt="">
+        <img src="https://demo.lanrenzhijia.com/demo/112/11228/demo/img/6-point.png" alt="">
+        <br>
+        <button onclick="change()">摇一摇</button>
+    </main>
+    <script>
+        var p = document.querySelector('p')
+        var img = document.querySelectorAll('img')
+        var btn = document.querySelector('button')
+        var settime = null
+        var totalnum = 0
+        function getnum() {
+            settime = setInterval(() => {
+                for (let i = 0; i < img.length; i++) {
+                    img[i].src = "https://demo.lanrenzhijia.com/demo/112/11228/demo/img/" + Math.ceil(Math
+                        .random() * 6) + "-point.png"
+                }
+            }, 30);
+            p.innerText = ' '
+            btn.innerText='停止'
+            btn.style.backgroundColor = 'red'
+        }
+        function losenum() {
+            clearInterval(settime)
+            for (let i = 0; i < img.length; i++) {
+                totalnum += img[i].src.slice(-11, -10) * 1
+            }
+            p.innerText = '所得的点数为：' + totalnum
+            totalnum = 0
+            p.style.display = 'block'
+            btn.innerText = '摇一摇'
+            btn.style.backgroundColor = 'green'
+        }
+        var sign = 0
+        function change() {
+            sign == 0 ?
+                (getnum(), sign = 1) :
+                (losenum(), sign = 0)
+        }
+    </script>
+</body>
+
+</html>

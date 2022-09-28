@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <script>
+    //  Math 数学， 针对数字进行数学方法的相关操作都封装在该对象中
+
+    // 1.绝对值  |a|  一定位正数
+    console.log(Math.abs(-10));
+    
+    // 2. 随机数   0<= x < 1
+    console.log(Math.random()*100)
+
+    // 3.取整 
+    // 向上取整，只要小数部位有值，不管多小/多大，都会往整数部位进一
+    console.log(Math.ceil(5.00000000001));
+    
+    // 向下取整，只要小数部位有值，不管多小/多大，都只会取整数尾部，小数忽略不计
+    console.log(Math.floor(5.9999999999));
+
+    //四舍五入取整
+    console.log(Math.round(2.45));
+
+
+   //  1.请输出一个21~89的随机数
+   console.log(Math.floor(21+Math.random()*69));
+
+
+   //  2.在一个 1000 x 500  的区域放上20个小圆球，位置随机，颜色随机，
+   //       大小在10~20之间随机
+   for (var i = 0; i <20; i++) {
+    var div = document.createElement('div')
+    div.style.borderRadius='50%'
+    var size = Math.round(Math.random()*10+10)
+    div.style.width=size+'px'
+    div.style.height=size+'px'
+    div.style.backgroundColor='hsl('+Math.floor(Math.random()*361)+',50%,50%)'
+    div.style.marginTop=Math.random()*25+'px'
+    div.style.marginLeft = Math.random() * 1000 +'px'
+    document.body.appendChild(div)
+   }
+
+    console.clear()
+
+    // 4. 开平发
+    console.log(Math.sqrt(2));
+      console.log(Math.sqrt(4));
+
+
+    // 5 幂数  2的3次幂
+    console.log(Math.pow(2,3));
+
+    // 6.Π
+    console.log(Math.PI);
+
+    // 7.三角函数（sin,cos,tan....）
+
+    // 8。比大小
+    // 将数字中最大值进行过滤出来
+    console.log(Math.max(3,0,13,2,76,9));
+    // 将数字中最小值进行过滤出来
+    console.log(Math.min(3, 0, 13, 2, 76, 9));
+    
+
+
+
+   </script>
+</body>
+</html>

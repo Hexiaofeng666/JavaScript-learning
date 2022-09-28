@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // String内置对象，是针对字符串进行相关操作的方法存储一个容器
+        // 1.查
+        // 获取制定的内容
+        // str.char(index) 获取内容
+        // str.charCodeAt(index) 获取内容相应的ASII编码
+        // 截取部分内容
+        // str.substr(start,length)
+        // str.substring(start,end)
+        // str.slice(start,end)
+        // 根据指定内容获取索引值
+        // str.indexOf(内容)
+
+        // 判断方法:对字符串的内容进行筛选
+        // str.includes(内容)  判断字符串中是否含有该内容
+        // str.startsWidth(内容)判断字符串中是否以该内容开头
+        // str.endsWidth(内容)判断字符串中是否以该内容结尾
+
+
+        // 2.增
+        var str = '今天'
+    
+        console.log(str + '周四');
+        console.log(str.concat('天气有点下雨'));
+
+        // 3.改
+        var text = '今晚要学习很多的知识,如java'
+        // replace(要被替换的内容，新的内容)
+        console.log(text.replace('java','js'));
+        console.log(text.indexOf('java'));
+        console.log(text.substring(0,text.indexOf('java'))+'html');
+        console.log(text);
+
+        // 4.删除（就是截取）
+
+        var fruit = '苹果，香蕉，西瓜，哈密瓜'
+        // console.log(fruit.substr(0,2)); //苹果
+        // console.log(fruit.substr(3,2));//香蕉
+
+        // 进行字符串的拆分（split）,拆分后的字符串会转为数组
+        var arr = fruit.split('，')
+        console.log(arr[3]);
+
+
+
+
+    </script>
+</body>
+</html>

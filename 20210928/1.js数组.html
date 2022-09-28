@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var numarr = [3, 6, 1, 0, 2, 8, 4];
+        // 排序 sort
+        // 第一排序:[6,3,1,0,2,4,8]
+        // 第二排序:[6,3,1,0,2,8,4]
+        // 第三排序:[6,3,1,0,2,8,4]
+        // 第四排序:[6,3,1,2,0,8,4]
+        // ...
+
+
+
+        // 降序排列
+        // numarr.sort(function (a, b) {
+        //     return b - a;
+        // })
+        // console.log(numarr);
+
+        // 升序排列
+        // numarr.sort(function(a,b){
+        //     return a-b;
+        // })
+        // console.log(numarr);
+
+
+        // 随机排序
+        // numarr.sort(function () {
+        //     return Math.random - 0.5
+        // })
+        // console.log(numarr);
+
+        // 倒叙  reserve(){
+        // numarr.reverse()
+
+        // 合并数组   concat会产生一个新的数组
+        var strarr = ['a', 'b', 'c', 'd']
+        // var newarr = numarr.concat(strarr)
+
+        // console.log(newarr);
+
+
+        // 数组方法:
+        // 1.forEach  遍历数组(获取到数组中的每个内容)
+        // strarr.forEach(function (item,index,arr) {
+        //     console.group('分组');
+        //     console.log(item);//数组中的每个元素
+        //     console.log(index);//元素对应的索引值
+        //     // console.log(arr);//数组本身
+        //     console.groupEnd();
+        // })
+
+        // 2.过滤  将数组中符合要求的内容进行筛选出来，并且会返回一个新的数组
+        var newarrone = numarr.filter(function (value, index, arr) {
+            // console.log(value);
+            if (value > 5) {
+                return value
+            }
+        })
+        console.log(newarrone); // 6  8
+
+        // 3.map  将数组中的每个元素进行对应的操作，并且返回一个和原来数组长度一样的新数组
+        var newarr = numarr.map(function (value, index, arr) {
+            return value * 2
+        })
+        console.log(numarr);  //[3, 6, 1, 0, 2, 8, 4]
+        console.log(newarr);  //[6, 12, 2, 0, 4, 16, 8]
+        // 跟forEach差别  ：map产生一个新数组，且不会对旧数组造成影响
+
+
+        // 4.find  查找数组中符合条件的内容，并且会对查找到的内容进行返回
+        var result = numarr.find(function (value, index, arr) {
+            if (value > 5) {
+                return value
+            }
+        })
+        console.log(result); //6
+        // 跟filter差别  ：find一旦找到符合条件的内容，就立刻将内容进行返回出来,只找一个
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        算数运算符 
+        1. + - * /
+        2.% 求余 （取余数）
+        3. = 赋值 （从左往右看）
+        4.++  --  +=  -= 自增自减
+        5.& 与运算符  |或运算  （较少使用）
+
+
+        逻辑运算符
+        1.>     <    >=   <=  !=
+        2.==     ===恒等于
+        3.&&  与   ||或   !非
+
+        */
+
+
+
+        /*
+            运算符的使用有优先级
+            括号成员第一
+            全体单目第二（只含有一种运算符）
+            乘除第三，加减第四
+            移位第五（>>   <<）
+            关系第六(大于小于)
+            等于不等于第七
+            逻辑第八
+            逗号最低
+        
+        
+        
+        */
+
+
+        var a=4,b=5,c=3;
+        console.log(a*b);
+        console.log(a / b);
+        console.log(a % b);
+        console.log(a<c/b);
+        console.log(a+b*c>5!=10);
+
+
+        // 自增
+
+        // ++对自身进行1的自增
+        // n++ 先使用n之后，再对n进行加一
+        // ++n 先对n进行加1，后使用n
+
+
+
+        // ++
+        var a =10;
+        // a++;
+        // console.log(a++);//10
+        // console.log(a);//11
+
+
+        // console.log(++a);//12
+        // console.log(a);//12
+
+        // += 自定义自增的基数
+        // a= a+5
+        // 简写为：
+        a+=5;
+        console.log(a);
+        
+
+        // --和-=   和 ++/+=是同一个道理
+
+    </script>
+</body>
+</html>

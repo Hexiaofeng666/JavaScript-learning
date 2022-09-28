@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text{
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="functionone()" class="text">作业一</button><br>
+    <button onclick="functiontwo()" class="text">作业二</button><br>
+    <button onclick="functionthree()" class="text">作业三</button><br>
+    <button onclick="functionfour()" class="text">作业四</button><br>
+    <button onclick="functionfive()" class="text">作业五</button><br>
+    <!-- <p>结果是：</p> -->
+    <p class="text"></p>
+    <script>
+        var btn = document.getElementsByClassName('text');
+        // console.log(btn[0]);
+        function functionone() {
+            let s = 0;
+            for (let i = 2; i <= 200; i++) {
+                s = s+i;
+            }
+            // var t = ("2~200 不包含 之间的总和结果是");
+            btn[5].innerHTML = ("2~200 总和结果是：") + s;
+        }
+        function functiontwo() {
+            let s = 0;
+            for (let i = 0; i <= 175; i++) {
+                
+                if (i%2==0&&i%6==0) {
+                    s=s+i;
+                    // console.log(s);
+                }
+                // console.log(s);
+            }
+            console.log(s);
+            btn[5].innerHTML = ("0~175 之间能为 被2 和6整除的数字之间的相乘的结果是：") + s;
+        }
+        function functionthree() {
+            // 清空
+            btn[5].innerHTML = " ";
+            for (let i = 2; i <= 180; i++) {
+                let sign = 0;
+                for (let j = 2; j <i; j++) {
+                    if (i%j==0) {
+                        sign++;
+                        // console.log(sign);
+                    }
+                    
+                }
+                if (sign==0) {
+                    // s.push = i;
+                    btn[5].innerHTML =  btn[5].innerHTML + i + "&nbsp";
+                    // console.log(i);
+                    // console.log(s);
+                }
+                // console.log(s[]);
+            }
+            btn[5].innerHTML = ("2~180 之间的质数的结果是：") + btn[5].innerHTML;
+        }
+        function functionfour() {
+            var msg = prompt("请输入年份");
+            let yeardays = 0;
+            let days = 0;
+            // console.log(msg);
+            // 判断闰年
+            if (msg%4==0&&msg%100!=0||msg%400==0) {
+                // console.log("是闰年");
+                yeardays = 366;
+                days=29;
+            }
+            else{
+                yeardays = 365;
+                days=28;
+            }
+            alert(msg + "年有共有" + yeardays + "天，其中2月份为" + days + "天");
+            
+        }
+        function functionfive() {
+            // 清空
+            btn[5].innerHTML = " ";
+            for (let i = 1; i < 10; i++) {
+                for (let j = 1; j <= i; j++) {
+                    btn[5].innerHTML = btn[5].innerHTML + (j + "*" + i + "=" + j*i + "&nbsp");
+                }
+                btn[5].innerHTML = btn[5].innerHTML + "<br>" ;
+            }
+            btn[5].innerHTML = "九九乘法表：" + "<br>" + btn[5].innerHTML;
+        }
+    </script>
+</body>
+</html>

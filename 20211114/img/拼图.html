@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img{
+      width: 100px;
+      height: 100px;
+    }
+    main{
+      width: 300px;
+      height: 300px;
+      border: 1px solid black;
+      margin: auto;
+      font-size: 0;
+    }
+    div{
+      text-align: center;
+      margin-top: 20px;
+    }
+    div img{
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+   <main></main>
+   <div>
+     <span>当前步数：00</span>
+     <img src="all.png" alt="">
+   </div>
+   <script>
+     var main = document.querySelector('main')
+    //  定义一个长度为9的数组，里面存放1~9的数字
+    var numarr=new Array(9).fill(1).map(function(item,index){
+      return index+1
+    }).sort(function () {
+      return Math.random()-0.5
+    })
+
+    // 要将随机的概率排除有可能是1~9的正序排序
+    // 怎么排除？
+    var ischange = false
+    numarr.forEach(function(item,index){
+      console.log(item);
+      console.log(index);
+      if (item!=index+1) {
+        numarr.sort(function () {
+      return Math.random()-0.5
+    })
+      }
+    })
+
+    // 拼图的初始渲染
+    numarr.forEach(function(item){
+      var img = document.createElement('img')
+      img.src=item+'.png'
+      main.appendChild(img)
+    })
+  
+   </script>
+</body>
+</html>

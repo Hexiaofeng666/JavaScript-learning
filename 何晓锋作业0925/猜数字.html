@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <input type="text" id="btn">
+        <button onclick="checknum()">确认</button>
+        <p>请输入0~100之间的数字</p>
+    </main>
+
+    <script>
+        var p = document.querySelector("p");
+        var main = document.querySelector("main")
+        var num = Math.floor(Math.random() * 100);
+        console.log(num);
+        var newp = document.createElement("p");
+        var i = 4;
+        var max = 100;
+        var min = 0;
+        function checknum() {
+            var input = document.getElementById("btn").value;
+            if (i < 0) {
+                alert("没次数了，请刷新重来！")
+            } else {
+                // console.log(input);
+                // console.log(max);
+                // 判断是否超出取值范围
+                if (input > max || input < min) {
+                    newp.innerText = '超出范围了，请重新输入！';
+                } else {
+                    if (input > num ) {
+                        max = input;
+                        newp.innerText = '猜大了，输入' + min + '~' + max + '之间的数字，还有' + i + '次机会';
+                    } else if (input < num) {
+                        min = input;
+                        newp.innerText = '猜大了，输入' + min + '~' + max + '之间的数字，还有' + i + '次机会';
+                    } else {
+                        newp.innerText = '猜对了！！！！！！！！！！！！';
+                    }
+                    i--;
+                }
+                main.replaceChild(newp, main.children[2])
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>
